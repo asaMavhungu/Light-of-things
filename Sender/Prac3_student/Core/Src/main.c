@@ -49,8 +49,24 @@ TIM_HandleTypeDef htim3;
 uint32_t prev_millis = 0;
 uint32_t curr_millis = 0;
 uint32_t delay_t = 500; // Initialise delay to 500ms
+
+uint32_t data = 0b11011011;
+int transmit = 0b0;
+
 uint32_t adc_val;
 volatile uint32_t last_button_press_time = 0;
+
+
+#define True 1
+#define False 0
+
+#define LINE_ONE 0x80 // Address of the first char in line 1 
+#define LINE_TWO 0xC0 // Address of the first char in line 2
+void setLCD1(char *str);
+void setLCD2(char *str);
+
+char* Dec2RadixI(int, int);
+void decimalToBinaryString(uint16_t, char*);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -105,33 +121,158 @@ int main(void)
   // PWM setup
   uint32_t CCR = 0;
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3); // Start PWM on TIM3 Channel 3
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
+  int send = 0b0;
+
+  
+  
+  //data = 0b11111111;
   while (1)
+    {
+    // Toggle LED0
+    send = ~send;
+    HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
+
+    int to_send = data & 0b1;
+
+    if (send)
+    {
+
+      //int to_send = data & 0b1;
+      data = data >> 1;
+
+      if (to_send)
+        HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_SET);
+      else
+        HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+
+      //++adc_value;
+      //char lcd_display_string[16];
+      //sprintf(lcd_display_string, "%lu", to_send);
+      //writeLCD(lcd_display_string);
+
+    }
+    else
+    {
+      HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+    }
+    // HAL_GPIO_TogglePin(GPIOB, LED5_Pin);
+
+    // ADC to LCD; TODO: Read POT1 value and write to LCD
+
+    uint32_t adc_value = pollADC();
+
+    char lcd_display_string[16];
+    //sprintf(lcd_display_string, "%lu", to_send);
+    sprintf(lcd_display_string, "%d : %d : %d", to_send, adc_value, data);
+    writeLCD(lcd_display_string);
+
+
+
+    char bin_number[13];
+
+    decimalToBinaryString(adc_value, bin_number);
+
+    //char* ace = Dec2RadixI(asa, 2);
+
+    //char * bin_number = Dec2RadixI(asa, 2);
+
+
+
+    //sprintf(bin_number, "0b", Dec2RadixI((int)adc_val, 2) );
+    setLCD2(bin_number);
+
+
+    // Update PWM value; TODO: Get CRR
+    CCR= ADCtoCCR(adc_value);
+
+    __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, CCR);
+
+    // Wait for delay ms
+    HAL_Delay (delay_t);
+      /* USER CODE END WHILE */
+
+      /* USER CODE BEGIN 3 */
+    }
+    /* USER CODE END 3 */
+}
+
+void decimalToBinaryString(uint16_t decimal, char* binaryString) {
+    for (int i = 11; i >= 0; i--) {
+        binaryString[11 - i] = ((decimal >> i) & 1) + '0';
+    }
+    binaryString[12] = '\0'; // Null-terminate the string
+}
+
+
+void setLCD1(char *str)
+{
+    lcd_command(LINE_ONE);        // set cursor to the first line
+    lcd_putstring("                "); // clear the first line
+    lcd_command(LINE_ONE);      // set cursor to beginning of first line
+    lcd_putstring(str);           // display the given string
+}
+
+void setLCD2(char *str)
+{
+    lcd_command(LINE_TWO);
+    lcd_putstring("                "); // clear the first line
+    lcd_command(LINE_TWO);      // set cursor to beginning of first line
+    lcd_putstring(str);
+}
+
+
+void send_data_DEPRECATED(int send, int data, uint32_t CCR)
+{
+
+  while(1)
   {
-	// Toggle LED0
-	HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
+    // Toggle LED0
+    send = ~send;
+    HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
 
-	// ADC to LCD; TODO: Read POT1 value and write to LCD
-	uint32_t adc_value = pollADC();
-	char lcd_display_string[16];
-    sprintf(lcd_display_string, "%lu", adc_value);
-	writeLCD(lcd_display_string);
+    int to_send = data & 0b1;
 
-	// Update PWM value; TODO: Get CRR
-	CCR= ADCtoCCR(adc_value);
+    if (send)
+    {
 
-	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, CCR);
+      //int to_send = data & 0b1;
+      data = data >> 1;
 
-	// Wait for delay ms
-	HAL_Delay (delay_t);
-    /* USER CODE END WHILE */
+      if (to_send)
+        HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_SET);
+      else
+        HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
 
-    /* USER CODE BEGIN 3 */
+      //++adc_value;
+      //char lcd_display_string[16];
+      //sprintf(lcd_display_string, "%lu", to_send);
+      //writeLCD(lcd_display_string);
+
+    }
+    else
+    {
+      HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+    }
+    // HAL_GPIO_TogglePin(GPIOB, LED5_Pin);
+
+    // ADC to LCD; TODO: Read POT1 value and write to LCD
+
+    uint32_t adc_value = pollADC();
+
+    char lcd_display_string[16];
+    //sprintf(lcd_display_string, "%lu", to_send);
+    sprintf(lcd_display_string, "%d :: %d :: %d", to_send, adc_value, data);
+    writeLCD(lcd_display_string);
+
   }
-  /* USER CODE END 3 */
+
+
 }
 
 /**
@@ -314,6 +455,8 @@ static void MX_GPIO_Init(void)
   /**/
   LL_GPIO_ResetOutputPin(LED7_GPIO_Port, LED7_Pin);
 
+  LL_GPIO_ResetOutputPin(LED5_GPIO_Port, LED5_Pin);
+
   /**/
   LL_SYSCFG_SetEXTISource(LL_SYSCFG_EXTI_PORTA, LL_SYSCFG_EXTI_LINE0);
 
@@ -337,6 +480,14 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
   LL_GPIO_Init(LED7_GPIO_Port, &GPIO_InitStruct);
+
+
+  GPIO_InitStruct.Pin = LED5_Pin;
+  GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
+  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
+  LL_GPIO_Init(LED5_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
   HAL_NVIC_SetPriority(EXTI0_1_IRQn, 0, 0);
@@ -362,11 +513,28 @@ void EXTI0_1_IRQHandler(void)
 		    // Check if the time difference is greater than a debounce threshold (e.g., 100 ms)
 		    if (time_difference > 100) {
 		        // Toggle the delay frequency between 1 Hz and 2 Hz
-		        if (delay_t == 1000) {
-		            delay_t = 500;  // Change to 2 Hz (500 ms period)
-		        } else {
-		            delay_t = 1000; // Change to 1 Hz (1000 ms period)
-		        }
+
+            //data = adc_val;
+
+            data = pollADC();
+
+            transmit = 0b1;
+
+            //send_data(0b0, data, 0);
+
+
+            HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_SET);
+
+
+
+
+
+
+		        //if (delay_t == 1000) {
+		        //    delay_t = 500;  // Change to 2 Hz (500 ms period)
+		        //} else {
+		        //    delay_t = 1000; // Change to 1 Hz (1000 ms period)
+		        //}
 
 		        // Update the last button press time
 		        last_button_press_time = current_time;

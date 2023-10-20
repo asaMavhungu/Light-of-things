@@ -39,6 +39,19 @@ extern "C" {
 #include "stm32f0xx_ll_dma.h"
 #include "stm32f0xx_ll_gpio.h"
 
+
+#include "stm32f0xx_hal.h"
+#include "stm32f0xx_ll_crs.h"
+#include "stm32f0xx_ll_rcc.h"
+#include "stm32f0xx_ll_bus.h"
+#include "stm32f0xx_ll_system.h"
+#include "stm32f0xx_ll_exti.h"
+#include "stm32f0xx_ll_cortex.h"
+#include "stm32f0xx_ll_utils.h"
+#include "stm32f0xx_ll_pwr.h"
+#include "stm32f0xx_ll_dma.h"
+#include "stm32f0xx_ll_gpio.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -73,6 +86,33 @@ void Error_Handler(void);
 #define Button0_GPIO_Port GPIOA
 #define LED7_Pin LL_GPIO_PIN_7
 #define LED7_GPIO_Port GPIOB
+
+/* Buttons ====================================================================*/
+#define Button0_Pin LL_GPIO_PIN_0
+#define Button0_GPIO_Port GPIOA
+#define Button1_Pin LL_GPIO_PIN_1
+#define Button1_GPIO_Port GPIOA
+
+/* ==============================================================================*/
+
+/* LEDs =======================================================================*/
+#define LED0_Pin LL_GPIO_PIN_0
+#define LED0_GPIO_Port GPIOB
+#define LED1_Pin LL_GPIO_PIN_1
+#define LED1_GPIO_Port GPIOB
+#define LED2_Pin LL_GPIO_PIN_2
+#define LED2_GPIO_Port GPIOB
+#define LED3_Pin LL_GPIO_PIN_3
+#define LED3_GPIO_Port GPIOB
+#define LED4_Pin LL_GPIO_PIN_4
+#define LED4_GPIO_Port GPIOB
+#define LED5_Pin LL_GPIO_PIN_5
+#define LED5_GPIO_Port GPIOB
+#define LED6_Pin LL_GPIO_PIN_6
+#define LED6_GPIO_Port GPIOB
+#define LED7_Pin LL_GPIO_PIN_7
+#define LED7_GPIO_Port GPIOB
+/* ==============================================================================*/
 
 /* USER CODE BEGIN Private defines */
 
