@@ -159,9 +159,11 @@ int main(void)
 
     HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
 
+    send = HAL_GPIO_ReadPin(GPIOB, LED7_Pin);
+
     if (transmit)
     {
-      send = ~send;
+      //send = ~send;
 
       //int to_send = data & 0b1;
 
