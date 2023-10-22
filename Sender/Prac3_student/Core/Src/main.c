@@ -242,7 +242,10 @@ int main(void)
         sprintf(lcd_display_string, "Setup: %d/8", setup);
         writeLCD(lcd_display_string);
         if (setup == 8)
+        {
           ready = True;
+          HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+        }
       }
 
     }
