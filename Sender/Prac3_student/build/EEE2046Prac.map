@@ -1457,7 +1457,7 @@ LOAD c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@
                 0x08000000                g_pfnVectors
                 0x080000c0                        . = ALIGN (0x4)
 
-.text           0x080000c0     0x27a8
+.text           0x080000c0     0x27d8
                 0x080000c0                        . = ALIGN (0x4)
  *(.text)
  .text          0x080000c0       0x14 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_thumb1_case_shi.o)
@@ -1523,354 +1523,355 @@ LOAD c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@
  .text.SystemClock_Config
                 0x080008d0       0xa4 build/main.o
                 0x080008d0                SystemClock_Config
- .text.main     0x08000974      0x144 build/main.o
+ .text.main     0x08000974      0x174 build/main.o
                 0x08000974                main
  .text.HAL_MspInit
-                0x08000ab8       0x30 build/stm32f0xx_hal_msp.o
-                0x08000ab8                HAL_MspInit
+                0x08000ae8       0x30 build/stm32f0xx_hal_msp.o
+                0x08000ae8                HAL_MspInit
  .text.HAL_ADC_MspInit
-                0x08000ae8       0x60 build/stm32f0xx_hal_msp.o
-                0x08000ae8                HAL_ADC_MspInit
+                0x08000b18       0x60 build/stm32f0xx_hal_msp.o
+                0x08000b18                HAL_ADC_MspInit
  .text.HAL_TIM_Base_MspInit
-                0x08000b48       0x2c build/stm32f0xx_hal_msp.o
-                0x08000b48                HAL_TIM_Base_MspInit
+                0x08000b78       0x2c build/stm32f0xx_hal_msp.o
+                0x08000b78                HAL_TIM_Base_MspInit
  .text.HAL_TIM_MspPostInit
-                0x08000b74       0x50 build/stm32f0xx_hal_msp.o
-                0x08000b74                HAL_TIM_MspPostInit
+                0x08000ba4       0x50 build/stm32f0xx_hal_msp.o
+                0x08000ba4                HAL_TIM_MspPostInit
  .text.NMI_Handler
-                0x08000bc4        0x2 build/stm32f0xx_it.o
-                0x08000bc4                NMI_Handler
+                0x08000bf4        0x2 build/stm32f0xx_it.o
+                0x08000bf4                NMI_Handler
  .text.HardFault_Handler
-                0x08000bc6        0x2 build/stm32f0xx_it.o
-                0x08000bc6                HardFault_Handler
+                0x08000bf6        0x2 build/stm32f0xx_it.o
+                0x08000bf6                HardFault_Handler
  .text.SVC_Handler
-                0x08000bc8        0x2 build/stm32f0xx_it.o
-                0x08000bc8                SVC_Handler
+                0x08000bf8        0x2 build/stm32f0xx_it.o
+                0x08000bf8                SVC_Handler
  .text.PendSV_Handler
-                0x08000bca        0x2 build/stm32f0xx_it.o
-                0x08000bca                PendSV_Handler
+                0x08000bfa        0x2 build/stm32f0xx_it.o
+                0x08000bfa                PendSV_Handler
  .text.SysTick_Handler
-                0x08000bcc        0x8 build/stm32f0xx_it.o
-                0x08000bcc                SysTick_Handler
+                0x08000bfc        0x8 build/stm32f0xx_it.o
+                0x08000bfc                SysTick_Handler
  .text.SystemInit
-                0x08000bd4        0x2 build/system_stm32f0xx.o
-                0x08000bd4                SystemInit
- *fill*         0x08000bd6        0x2 
+                0x08000c04        0x2 build/system_stm32f0xx.o
+                0x08000c04                SystemInit
+ *fill*         0x08000c06        0x2 
  .text.HAL_InitTick
-                0x08000bd8       0x50 build/stm32f0xx_hal.o
-                0x08000bd8                HAL_InitTick
+                0x08000c08       0x50 build/stm32f0xx_hal.o
+                0x08000c08                HAL_InitTick
  .text.HAL_Init
-                0x08000c28       0x20 build/stm32f0xx_hal.o
-                0x08000c28                HAL_Init
+                0x08000c58       0x20 build/stm32f0xx_hal.o
+                0x08000c58                HAL_Init
  .text.HAL_IncTick
-                0x08000c48       0x18 build/stm32f0xx_hal.o
-                0x08000c48                HAL_IncTick
+                0x08000c78       0x18 build/stm32f0xx_hal.o
+                0x08000c78                HAL_IncTick
  .text.HAL_GetTick
-                0x08000c60        0xc build/stm32f0xx_hal.o
-                0x08000c60                HAL_GetTick
+                0x08000c90        0xc build/stm32f0xx_hal.o
+                0x08000c90                HAL_GetTick
  .text.HAL_Delay
-                0x08000c6c       0x24 build/stm32f0xx_hal.o
-                0x08000c6c                HAL_Delay
+                0x08000c9c       0x24 build/stm32f0xx_hal.o
+                0x08000c9c                HAL_Delay
  .text.ADC_ConversionStop
-                0x08000c90       0x5c build/stm32f0xx_hal_adc.o
+                0x08000cc0       0x5c build/stm32f0xx_hal_adc.o
  .text.ADC_Disable
-                0x08000cec       0x88 build/stm32f0xx_hal_adc.o
+                0x08000d1c       0x88 build/stm32f0xx_hal_adc.o
  .text.ADC_Enable
-                0x08000d74       0xb0 build/stm32f0xx_hal_adc.o
+                0x08000da4       0xb0 build/stm32f0xx_hal_adc.o
  .text.HAL_ADC_Init
-                0x08000e24      0x184 build/stm32f0xx_hal_adc.o
-                0x08000e24                HAL_ADC_Init
+                0x08000e54      0x184 build/stm32f0xx_hal_adc.o
+                0x08000e54                HAL_ADC_Init
  .text.HAL_ADC_Start
-                0x08000fa8       0x60 build/stm32f0xx_hal_adc.o
-                0x08000fa8                HAL_ADC_Start
+                0x08000fd8       0x60 build/stm32f0xx_hal_adc.o
+                0x08000fd8                HAL_ADC_Start
  .text.HAL_ADC_Stop
-                0x08001008       0x44 build/stm32f0xx_hal_adc.o
-                0x08001008                HAL_ADC_Stop
+                0x08001038       0x44 build/stm32f0xx_hal_adc.o
+                0x08001038                HAL_ADC_Stop
  .text.HAL_ADC_PollForConversion
-                0x0800104c       0xc8 build/stm32f0xx_hal_adc.o
-                0x0800104c                HAL_ADC_PollForConversion
+                0x0800107c       0xc8 build/stm32f0xx_hal_adc.o
+                0x0800107c                HAL_ADC_PollForConversion
  .text.HAL_ADC_GetValue
-                0x08001114        0x6 build/stm32f0xx_hal_adc.o
-                0x08001114                HAL_ADC_GetValue
+                0x08001144        0x6 build/stm32f0xx_hal_adc.o
+                0x08001144                HAL_ADC_GetValue
  .text.HAL_ADC_ConvCpltCallback
-                0x0800111a        0x2 build/stm32f0xx_hal_adc.o
-                0x0800111a                HAL_ADC_ConvCpltCallback
+                0x0800114a        0x2 build/stm32f0xx_hal_adc.o
+                0x0800114a                HAL_ADC_ConvCpltCallback
  .text.HAL_ADC_LevelOutOfWindowCallback
-                0x0800111c        0x2 build/stm32f0xx_hal_adc.o
-                0x0800111c                HAL_ADC_LevelOutOfWindowCallback
+                0x0800114c        0x2 build/stm32f0xx_hal_adc.o
+                0x0800114c                HAL_ADC_LevelOutOfWindowCallback
  .text.HAL_ADC_ErrorCallback
-                0x0800111e        0x2 build/stm32f0xx_hal_adc.o
-                0x0800111e                HAL_ADC_ErrorCallback
+                0x0800114e        0x2 build/stm32f0xx_hal_adc.o
+                0x0800114e                HAL_ADC_ErrorCallback
  .text.HAL_ADC_IRQHandler
-                0x08001120       0xd0 build/stm32f0xx_hal_adc.o
-                0x08001120                HAL_ADC_IRQHandler
+                0x08001150       0xd0 build/stm32f0xx_hal_adc.o
+                0x08001150                HAL_ADC_IRQHandler
  .text.HAL_ADC_ConfigChannel
-                0x080011f0      0x134 build/stm32f0xx_hal_adc.o
-                0x080011f0                HAL_ADC_ConfigChannel
+                0x08001220      0x134 build/stm32f0xx_hal_adc.o
+                0x08001220                HAL_ADC_ConfigChannel
  .text.__NVIC_SetPriority
-                0x08001324       0x60 build/stm32f0xx_hal_cortex.o
+                0x08001354       0x60 build/stm32f0xx_hal_cortex.o
  .text.SysTick_Config
-                0x08001384       0x38 build/stm32f0xx_hal_cortex.o
+                0x080013b4       0x38 build/stm32f0xx_hal_cortex.o
  .text.HAL_NVIC_SetPriority
-                0x080013bc        0x8 build/stm32f0xx_hal_cortex.o
-                0x080013bc                HAL_NVIC_SetPriority
+                0x080013ec        0x8 build/stm32f0xx_hal_cortex.o
+                0x080013ec                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x080013c4       0x18 build/stm32f0xx_hal_cortex.o
-                0x080013c4                HAL_NVIC_EnableIRQ
+                0x080013f4       0x18 build/stm32f0xx_hal_cortex.o
+                0x080013f4                HAL_NVIC_EnableIRQ
  .text.HAL_SYSTICK_Config
-                0x080013dc        0x8 build/stm32f0xx_hal_cortex.o
-                0x080013dc                HAL_SYSTICK_Config
+                0x0800140c        0x8 build/stm32f0xx_hal_cortex.o
+                0x0800140c                HAL_SYSTICK_Config
  .text.HAL_GPIO_Init
-                0x080013e4      0x188 build/stm32f0xx_hal_gpio.o
-                0x080013e4                HAL_GPIO_Init
+                0x08001414      0x188 build/stm32f0xx_hal_gpio.o
+                0x08001414                HAL_GPIO_Init
  .text.HAL_GPIO_ReadPin
-                0x0800156c        0xe build/stm32f0xx_hal_gpio.o
-                0x0800156c                HAL_GPIO_ReadPin
+                0x0800159c        0xe build/stm32f0xx_hal_gpio.o
+                0x0800159c                HAL_GPIO_ReadPin
  .text.HAL_GPIO_WritePin
-                0x0800157a        0xc build/stm32f0xx_hal_gpio.o
-                0x0800157a                HAL_GPIO_WritePin
+                0x080015aa        0xc build/stm32f0xx_hal_gpio.o
+                0x080015aa                HAL_GPIO_WritePin
  .text.HAL_GPIO_TogglePin
-                0x08001586       0x10 build/stm32f0xx_hal_gpio.o
-                0x08001586                HAL_GPIO_TogglePin
+                0x080015b6       0x10 build/stm32f0xx_hal_gpio.o
+                0x080015b6                HAL_GPIO_TogglePin
  .text.HAL_GPIO_EXTI_Callback
-                0x08001596        0x2 build/stm32f0xx_hal_gpio.o
-                0x08001596                HAL_GPIO_EXTI_Callback
+                0x080015c6        0x2 build/stm32f0xx_hal_gpio.o
+                0x080015c6                HAL_GPIO_EXTI_Callback
  .text.HAL_GPIO_EXTI_IRQHandler
-                0x08001598       0x1c build/stm32f0xx_hal_gpio.o
-                0x08001598                HAL_GPIO_EXTI_IRQHandler
+                0x080015c8       0x1c build/stm32f0xx_hal_gpio.o
+                0x080015c8                HAL_GPIO_EXTI_IRQHandler
  .text.TIM_OC1_SetConfig
-                0x080015b4       0x8c build/stm32f0xx_hal_tim.o
+                0x080015e4       0x8c build/stm32f0xx_hal_tim.o
  .text.TIM_OC3_SetConfig
-                0x08001640       0x8c build/stm32f0xx_hal_tim.o
+                0x08001670       0x8c build/stm32f0xx_hal_tim.o
  .text.TIM_OC4_SetConfig
-                0x080016cc       0x74 build/stm32f0xx_hal_tim.o
+                0x080016fc       0x74 build/stm32f0xx_hal_tim.o
  .text.TIM_TI1_ConfigInputStage
-                0x08001740       0x22 build/stm32f0xx_hal_tim.o
- *fill*         0x08001762        0x2 
+                0x08001770       0x22 build/stm32f0xx_hal_tim.o
+ *fill*         0x08001792        0x2 
  .text.TIM_TI2_ConfigInputStage
-                0x08001764       0x28 build/stm32f0xx_hal_tim.o
+                0x08001794       0x28 build/stm32f0xx_hal_tim.o
  .text.TIM_ITRx_SetConfig
-                0x0800178c       0x10 build/stm32f0xx_hal_tim.o
+                0x080017bc       0x10 build/stm32f0xx_hal_tim.o
  .text.HAL_TIM_PWM_MspInit
-                0x0800179c        0x2 build/stm32f0xx_hal_tim.o
-                0x0800179c                HAL_TIM_PWM_MspInit
- *fill*         0x0800179e        0x2 
+                0x080017cc        0x2 build/stm32f0xx_hal_tim.o
+                0x080017cc                HAL_TIM_PWM_MspInit
+ *fill*         0x080017ce        0x2 
  .text.TIM_Base_SetConfig
-                0x080017a0       0xa4 build/stm32f0xx_hal_tim.o
-                0x080017a0                TIM_Base_SetConfig
+                0x080017d0       0xa4 build/stm32f0xx_hal_tim.o
+                0x080017d0                TIM_Base_SetConfig
  .text.HAL_TIM_Base_Init
-                0x08001844       0x58 build/stm32f0xx_hal_tim.o
-                0x08001844                HAL_TIM_Base_Init
+                0x08001874       0x58 build/stm32f0xx_hal_tim.o
+                0x08001874                HAL_TIM_Base_Init
  .text.HAL_TIM_PWM_Init
-                0x0800189c       0x58 build/stm32f0xx_hal_tim.o
-                0x0800189c                HAL_TIM_PWM_Init
+                0x080018cc       0x58 build/stm32f0xx_hal_tim.o
+                0x080018cc                HAL_TIM_PWM_Init
  .text.TIM_OC2_SetConfig
-                0x080018f4       0x84 build/stm32f0xx_hal_tim.o
-                0x080018f4                TIM_OC2_SetConfig
+                0x08001924       0x84 build/stm32f0xx_hal_tim.o
+                0x08001924                TIM_OC2_SetConfig
  .text.HAL_TIM_PWM_ConfigChannel
-                0x08001978       0xf0 build/stm32f0xx_hal_tim.o
-                0x08001978                HAL_TIM_PWM_ConfigChannel
+                0x080019a8       0xf0 build/stm32f0xx_hal_tim.o
+                0x080019a8                HAL_TIM_PWM_ConfigChannel
  .text.TIM_ETR_SetConfig
-                0x08001a68       0x18 build/stm32f0xx_hal_tim.o
-                0x08001a68                TIM_ETR_SetConfig
+                0x08001a98       0x18 build/stm32f0xx_hal_tim.o
+                0x08001a98                TIM_ETR_SetConfig
  .text.HAL_TIM_ConfigClockSource
-                0x08001a80      0x108 build/stm32f0xx_hal_tim.o
-                0x08001a80                HAL_TIM_ConfigClockSource
+                0x08001ab0      0x108 build/stm32f0xx_hal_tim.o
+                0x08001ab0                HAL_TIM_ConfigClockSource
  .text.TIM_CCxChannelCmd
-                0x08001b88       0x1a build/stm32f0xx_hal_tim.o
-                0x08001b88                TIM_CCxChannelCmd
- *fill*         0x08001ba2        0x2 
+                0x08001bb8       0x1a build/stm32f0xx_hal_tim.o
+                0x08001bb8                TIM_CCxChannelCmd
+ *fill*         0x08001bd2        0x2 
  .text.HAL_TIM_PWM_Start
-                0x08001ba4       0xfc build/stm32f0xx_hal_tim.o
-                0x08001ba4                HAL_TIM_PWM_Start
+                0x08001bd4       0xfc build/stm32f0xx_hal_tim.o
+                0x08001bd4                HAL_TIM_PWM_Start
  .text.HAL_TIMEx_MasterConfigSynchronization
-                0x08001ca0       0x6c build/stm32f0xx_hal_tim_ex.o
-                0x08001ca0                HAL_TIMEx_MasterConfigSynchronization
+                0x08001cd0       0x6c build/stm32f0xx_hal_tim_ex.o
+                0x08001cd0                HAL_TIMEx_MasterConfigSynchronization
  .text.LL_EXTI_Init
-                0x08001d0c       0xc8 build/stm32f0xx_ll_exti.o
-                0x08001d0c                LL_EXTI_Init
+                0x08001d3c       0xc8 build/stm32f0xx_ll_exti.o
+                0x08001d3c                LL_EXTI_Init
  .text.LL_GPIO_Init
-                0x08001dd4       0xb8 build/stm32f0xx_ll_gpio.o
-                0x08001dd4                LL_GPIO_Init
+                0x08001e04       0xb8 build/stm32f0xx_ll_gpio.o
+                0x08001e04                LL_GPIO_Init
  .text.LL_SetSystemCoreClock
-                0x08001e8c        0xc build/stm32f0xx_ll_utils.o
-                0x08001e8c                LL_SetSystemCoreClock
+                0x08001ebc        0xc build/stm32f0xx_ll_utils.o
+                0x08001ebc                LL_SetSystemCoreClock
  .text.Reset_Handler
-                0x08001e98       0x50 build/startup_stm32f051x8.o
-                0x08001e98                Reset_Handler
+                0x08001ec8       0x50 build/startup_stm32f051x8.o
+                0x08001ec8                Reset_Handler
  .text.Default_Handler
-                0x08001ee8        0x2 build/startup_stm32f051x8.o
-                0x08001ee8                TIM1_CC_IRQHandler
-                0x08001ee8                TSC_IRQHandler
-                0x08001ee8                PVD_IRQHandler
-                0x08001ee8                I2C1_IRQHandler
-                0x08001ee8                RCC_CRS_IRQHandler
-                0x08001ee8                SPI1_IRQHandler
-                0x08001ee8                TIM6_DAC_IRQHandler
-                0x08001ee8                EXTI2_3_IRQHandler
-                0x08001ee8                I2C2_IRQHandler
-                0x08001ee8                TIM17_IRQHandler
-                0x08001ee8                CEC_CAN_IRQHandler
-                0x08001ee8                RTC_IRQHandler
-                0x08001ee8                TIM16_IRQHandler
-                0x08001ee8                TIM3_IRQHandler
-                0x08001ee8                EXTI4_15_IRQHandler
-                0x08001ee8                DMA1_Channel1_IRQHandler
-                0x08001ee8                Default_Handler
-                0x08001ee8                TIM14_IRQHandler
-                0x08001ee8                DMA1_Channel4_5_IRQHandler
-                0x08001ee8                TIM15_IRQHandler
-                0x08001ee8                SPI2_IRQHandler
-                0x08001ee8                WWDG_IRQHandler
-                0x08001ee8                TIM2_IRQHandler
-                0x08001ee8                DMA1_Channel2_3_IRQHandler
-                0x08001ee8                USART2_IRQHandler
-                0x08001ee8                FLASH_IRQHandler
-                0x08001ee8                USART1_IRQHandler
-                0x08001ee8                TIM1_BRK_UP_TRG_COM_IRQHandler
- *fill*         0x08001eea        0x2 
- .text.sprintf  0x08001eec       0x40 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-sprintf.o)
-                0x08001eec                siprintf
-                0x08001eec                sprintf
- .text.memset   0x08001f2c       0x10 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-memset.o)
-                0x08001f2c                memset
+                0x08001f18        0x2 build/startup_stm32f051x8.o
+                0x08001f18                TIM1_CC_IRQHandler
+                0x08001f18                TSC_IRQHandler
+                0x08001f18                PVD_IRQHandler
+                0x08001f18                I2C1_IRQHandler
+                0x08001f18                RCC_CRS_IRQHandler
+                0x08001f18                SPI1_IRQHandler
+                0x08001f18                TIM6_DAC_IRQHandler
+                0x08001f18                EXTI2_3_IRQHandler
+                0x08001f18                I2C2_IRQHandler
+                0x08001f18                TIM17_IRQHandler
+                0x08001f18                CEC_CAN_IRQHandler
+                0x08001f18                RTC_IRQHandler
+                0x08001f18                TIM16_IRQHandler
+                0x08001f18                TIM3_IRQHandler
+                0x08001f18                EXTI4_15_IRQHandler
+                0x08001f18                DMA1_Channel1_IRQHandler
+                0x08001f18                Default_Handler
+                0x08001f18                TIM14_IRQHandler
+                0x08001f18                DMA1_Channel4_5_IRQHandler
+                0x08001f18                TIM15_IRQHandler
+                0x08001f18                SPI2_IRQHandler
+                0x08001f18                WWDG_IRQHandler
+                0x08001f18                TIM2_IRQHandler
+                0x08001f18                DMA1_Channel2_3_IRQHandler
+                0x08001f18                USART2_IRQHandler
+                0x08001f18                FLASH_IRQHandler
+                0x08001f18                USART1_IRQHandler
+                0x08001f18                TIM1_BRK_UP_TRG_COM_IRQHandler
+ *fill*         0x08001f1a        0x2 
+ .text.sprintf  0x08001f1c       0x40 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-sprintf.o)
+                0x08001f1c                siprintf
+                0x08001f1c                sprintf
+ .text.memset   0x08001f5c       0x10 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-memset.o)
+                0x08001f5c                memset
  .text.__libc_init_array
-                0x08001f3c       0x48 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-init.o)
-                0x08001f3c                __libc_init_array
+                0x08001f6c       0x48 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-init.o)
+                0x08001f6c                __libc_init_array
  .text.__retarget_lock_acquire_recursive
-                0x08001f84        0x2 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-lock.o)
-                0x08001f84                __retarget_lock_acquire_recursive
+                0x08001fb4        0x2 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-lock.o)
+                0x08001fb4                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x08001f86        0x2 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-lock.o)
-                0x08001f86                __retarget_lock_release_recursive
- .text._free_r  0x08001f88       0x94 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-freer.o)
-                0x08001f88                _free_r
+                0x08001fb6        0x2 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-lock.o)
+                0x08001fb6                __retarget_lock_release_recursive
+ .text._free_r  0x08001fb8       0x94 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-freer.o)
+                0x08001fb8                _free_r
  .text.sbrk_aligned
-                0x0800201c       0x44 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-mallocr.o)
+                0x0800204c       0x44 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-mallocr.o)
  .text._malloc_r
-                0x08002060      0x100 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-mallocr.o)
-                0x08002060                _malloc_r
+                0x08002090      0x100 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-mallocr.o)
+                0x08002090                _malloc_r
  .text.__malloc_lock
-                0x08002160       0x10 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-mlock.o)
-                0x08002160                __malloc_lock
+                0x08002190       0x10 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-mlock.o)
+                0x08002190                __malloc_lock
  .text.__malloc_unlock
-                0x08002170       0x10 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-mlock.o)
-                0x08002170                __malloc_unlock
+                0x080021a0       0x10 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-mlock.o)
+                0x080021a0                __malloc_unlock
  .text.__ssputs_r
-                0x08002180       0xc0 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-nano-svfprintf.o)
-                0x08002180                __ssputs_r
+                0x080021b0       0xc0 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-nano-svfprintf.o)
+                0x080021b0                __ssputs_r
  .text._svfprintf_r
-                0x08002240      0x1fc c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-nano-svfprintf.o)
-                0x08002240                _svfiprintf_r
-                0x08002240                _svfprintf_r
+                0x08002270      0x1fc c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-nano-svfprintf.o)
+                0x08002270                _svfiprintf_r
+                0x08002270                _svfprintf_r
  .text._printf_common
-                0x0800243c       0xde c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-nano-vfprintf_i.o)
-                0x0800243c                _printf_common
- *fill*         0x0800251a        0x2 
+                0x0800246c       0xde c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0800246c                _printf_common
+ *fill*         0x0800254a        0x2 
  .text._printf_i
-                0x0800251c      0x234 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-nano-vfprintf_i.o)
-                0x0800251c                _printf_i
- .text.memmove  0x08002750       0x26 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-memmove.o)
-                0x08002750                memmove
- *fill*         0x08002776        0x2 
- .text._sbrk_r  0x08002778       0x24 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-sbrkr.o)
-                0x08002778                _sbrk_r
- .text.memchr   0x0800279c       0x16 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-memchr-stub.o)
-                0x0800279c                memchr
- .text.memcpy   0x080027b2       0x12 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-memcpy-stub.o)
-                0x080027b2                memcpy
+                0x0800254c      0x234 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x0800254c                _printf_i
+ .text.memmove  0x08002780       0x26 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-memmove.o)
+                0x08002780                memmove
+ *fill*         0x080027a6        0x2 
+ .text._sbrk_r  0x080027a8       0x24 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-sbrkr.o)
+                0x080027a8                _sbrk_r
+ .text.memchr   0x080027cc       0x16 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-memchr-stub.o)
+                0x080027cc                memchr
+ .text.memcpy   0x080027e2       0x12 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-memcpy-stub.o)
+                0x080027e2                memcpy
  .text._realloc_r
-                0x080027c4       0x5e c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-reallocr.o)
-                0x080027c4                _realloc_r
+                0x080027f4       0x5e c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-reallocr.o)
+                0x080027f4                _realloc_r
  .text._malloc_usable_size_r
-                0x08002822       0x10 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-msizer.o)
-                0x08002822                _malloc_usable_size_r
- *fill*         0x08002832        0x2 
- .text._sbrk    0x08002834       0x1c c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libnosys.a(sbrk.o)
-                0x08002834                _sbrk
+                0x08002852       0x10 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-msizer.o)
+                0x08002852                _malloc_usable_size_r
+ *fill*         0x08002862        0x2 
+ .text._sbrk    0x08002864       0x1c c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libnosys.a(sbrk.o)
+                0x08002864                _sbrk
  *(.glue_7)
- .glue_7        0x08002850        0x0 linker stubs
+ .glue_7        0x08002880        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08002850        0x0 linker stubs
+ .glue_7t       0x08002880        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08002850        0x0 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtbegin.o
+ .eh_frame      0x08002880        0x0 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtbegin.o
  *(.init)
- .init          0x08002850        0x4 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crti.o
-                0x08002850                _init
- .init          0x08002854        0x8 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtn.o
+ .init          0x08002880        0x4 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crti.o
+                0x08002880                _init
+ .init          0x08002884        0x8 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtn.o
  *(.fini)
- .fini          0x0800285c        0x4 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crti.o
-                0x0800285c                _fini
- .fini          0x08002860        0x8 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtn.o
-                0x08002868                        . = ALIGN (0x4)
-                0x08002868                        _etext = .
+ .fini          0x0800288c        0x4 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crti.o
+                0x0800288c                _fini
+ .fini          0x08002890        0x8 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtn.o
+                0x08002898                        . = ALIGN (0x4)
+                0x08002898                        _etext = .
 
-.vfp11_veneer   0x08002868        0x0
- .vfp11_veneer  0x08002868        0x0 linker stubs
+.vfp11_veneer   0x08002898        0x0
+ .vfp11_veneer  0x08002898        0x0 linker stubs
 
-.v4_bx          0x08002868        0x0
- .v4_bx         0x08002868        0x0 linker stubs
+.v4_bx          0x08002898        0x0
+ .v4_bx         0x08002898        0x0 linker stubs
 
-.iplt           0x08002868        0x0
- .iplt          0x08002868        0x0 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtbegin.o
+.iplt           0x08002898        0x0
+ .iplt          0x08002898        0x0 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtbegin.o
 
-.rodata         0x08002868       0x6c
-                0x08002868                        . = ALIGN (0x4)
+.rodata         0x08002898       0x7c
+                0x08002898                        . = ALIGN (0x4)
  *(.rodata)
+ .rodata        0x08002898       0x10 build/main.o
  *(.rodata*)
  .rodata.setLCD1.str1.4
-                0x08002868       0x11 build/main.o
- *fill*         0x08002879        0x3 
+                0x080028a8       0x11 build/main.o
+ *fill*         0x080028b9        0x3 
  .rodata.main.str1.4
-                0x0800287c       0x25 build/main.o
+                0x080028bc       0x25 build/main.o
  .rodata._svfprintf_r.str1.1
-                0x080028a1       0x11 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-nano-svfprintf.o)
+                0x080028e1       0x11 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-nano-svfprintf.o)
  .rodata._printf_i.str1.1
-                0x080028b2       0x22 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-nano-vfprintf_i.o)
-                0x080028d4                        . = ALIGN (0x4)
+                0x080028f2       0x22 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-nano-vfprintf_i.o)
+                0x08002914                        . = ALIGN (0x4)
 
-.rel.dyn        0x080028d4        0x0
- .rel.iplt      0x080028d4        0x0 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtbegin.o
+.rel.dyn        0x08002914        0x0
+ .rel.iplt      0x08002914        0x0 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtbegin.o
 
-.ARM.extab      0x080028d4        0x0
-                0x080028d4                        . = ALIGN (0x4)
+.ARM.extab      0x08002914        0x0
+                0x08002914                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x080028d4                        . = ALIGN (0x4)
+                0x08002914                        . = ALIGN (0x4)
 
-.ARM            0x080028d4        0x0
-                0x080028d4                        . = ALIGN (0x4)
-                0x080028d4                        __exidx_start = .
+.ARM            0x08002914        0x0
+                0x08002914                        . = ALIGN (0x4)
+                0x08002914                        __exidx_start = .
  *(.ARM.exidx*)
-                0x080028d4                        __exidx_end = .
-                0x080028d4                        . = ALIGN (0x4)
+                0x08002914                        __exidx_end = .
+                0x08002914                        . = ALIGN (0x4)
 
-.preinit_array  0x080028d4        0x0
-                0x080028d4                        . = ALIGN (0x4)
-                0x080028d4                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08002914        0x0
+                0x08002914                        . = ALIGN (0x4)
+                0x08002914                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x080028d4                        PROVIDE (__preinit_array_end = .)
-                0x080028d4                        . = ALIGN (0x4)
+                0x08002914                        PROVIDE (__preinit_array_end = .)
+                0x08002914                        . = ALIGN (0x4)
 
-.init_array     0x080028d4        0x4
-                0x080028d4                        . = ALIGN (0x4)
-                0x080028d4                        PROVIDE (__init_array_start = .)
+.init_array     0x08002914        0x4
+                0x08002914                        . = ALIGN (0x4)
+                0x08002914                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x080028d4        0x4 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtbegin.o
-                0x080028d8                        PROVIDE (__init_array_end = .)
-                0x080028d8                        . = ALIGN (0x4)
+ .init_array    0x08002914        0x4 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtbegin.o
+                0x08002918                        PROVIDE (__init_array_end = .)
+                0x08002918                        . = ALIGN (0x4)
 
-.fini_array     0x080028d8        0x4
-                0x080028d8                        . = ALIGN (0x4)
-                0x080028d8                        PROVIDE (__fini_array_start = .)
+.fini_array     0x08002918        0x4
+                0x08002918                        . = ALIGN (0x4)
+                0x08002918                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x080028d8        0x4 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtbegin.o
-                0x080028dc                        PROVIDE (__fini_array_end = .)
-                0x080028dc                        . = ALIGN (0x4)
-                0x080028dc                        _sidata = LOADADDR (.data)
+ .fini_array    0x08002918        0x4 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtbegin.o
+                0x0800291c                        PROVIDE (__fini_array_end = .)
+                0x0800291c                        . = ALIGN (0x4)
+                0x0800291c                        _sidata = LOADADDR (.data)
 
-.data           0x20000000       0x64 load address 0x080028dc
+.data           0x20000000       0x64 load address 0x0800291c
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -1900,11 +1901,11 @@ LOAD c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@
                 0x20000064                        . = ALIGN (0x4)
                 0x20000064                        _edata = .
 
-.igot.plt       0x20000064        0x0 load address 0x08002940
+.igot.plt       0x20000064        0x0 load address 0x08002980
  .igot.plt      0x20000064        0x0 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp/crtbegin.o
                 0x20000064                        . = ALIGN (0x4)
 
-.bss            0x20000064      0x200 load address 0x08002940
+.bss            0x20000064      0x200 load address 0x08002980
                 0x20000064                        _sbss = .
                 0x20000064                        __bss_start__ = _sbss
  *(.bss)
@@ -1948,7 +1949,7 @@ LOAD c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@
                 0x20000264                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20000264      0x604 load address 0x08002940
+                0x20000264      0x604 load address 0x08002980
                 0x20000268                        . = ALIGN (0x8)
  *fill*         0x20000264        0x4 
                 0x20000268                        PROVIDE (end = .)
@@ -2087,24 +2088,24 @@ LOAD c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@
  .comment       0x00000039       0x3a c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-msizer.o)
  .comment       0x00000039       0x3a c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libnosys.a(sbrk.o)
 
-.debug_info     0x00000000     0xc4cd
- .debug_info    0x00000000     0x241a build/main.o
- .debug_info    0x0000241a      0xc76 build/stm32f0xx_hal_msp.o
- .debug_info    0x00003090      0x121 build/stm32f0xx_it.o
- .debug_info    0x000031b1      0x25d build/system_stm32f0xx.o
- .debug_info    0x0000340e      0x74c build/stm32f0xx_hal.o
- .debug_info    0x00003b5a      0xf56 build/stm32f0xx_hal_adc.o
- .debug_info    0x00004ab0      0x7cc build/stm32f0xx_hal_cortex.o
- .debug_info    0x0000527c      0x5ec build/stm32f0xx_hal_gpio.o
- .debug_info    0x00005868     0x3b27 build/stm32f0xx_hal_tim.o
- .debug_info    0x0000938f     0x1a01 build/stm32f0xx_hal_tim_ex.o
- .debug_info    0x0000ad90      0x4d7 build/stm32f0xx_ll_exti.o
- .debug_info    0x0000b267      0x76f build/stm32f0xx_ll_gpio.o
- .debug_info    0x0000b9d6      0xa1c build/stm32f0xx_ll_utils.o
- .debug_info    0x0000c3f2       0x30 build/startup_stm32f051x8.o
- .debug_info    0x0000c422       0x31 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_thumb1_case_shi.o)
- .debug_info    0x0000c453       0x3e c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
- .debug_info    0x0000c491       0x3c c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
+.debug_info     0x00000000     0xc519
+ .debug_info    0x00000000     0x2466 build/main.o
+ .debug_info    0x00002466      0xc76 build/stm32f0xx_hal_msp.o
+ .debug_info    0x000030dc      0x121 build/stm32f0xx_it.o
+ .debug_info    0x000031fd      0x25d build/system_stm32f0xx.o
+ .debug_info    0x0000345a      0x74c build/stm32f0xx_hal.o
+ .debug_info    0x00003ba6      0xf56 build/stm32f0xx_hal_adc.o
+ .debug_info    0x00004afc      0x7cc build/stm32f0xx_hal_cortex.o
+ .debug_info    0x000052c8      0x5ec build/stm32f0xx_hal_gpio.o
+ .debug_info    0x000058b4     0x3b27 build/stm32f0xx_hal_tim.o
+ .debug_info    0x000093db     0x1a01 build/stm32f0xx_hal_tim_ex.o
+ .debug_info    0x0000addc      0x4d7 build/stm32f0xx_ll_exti.o
+ .debug_info    0x0000b2b3      0x76f build/stm32f0xx_ll_gpio.o
+ .debug_info    0x0000ba22      0xa1c build/stm32f0xx_ll_utils.o
+ .debug_info    0x0000c43e       0x30 build/startup_stm32f051x8.o
+ .debug_info    0x0000c46e       0x31 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_thumb1_case_shi.o)
+ .debug_info    0x0000c49f       0x3e c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
+ .debug_info    0x0000c4dd       0x3c c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
 
 .debug_abbrev   0x00000000     0x1e77
  .debug_abbrev  0x00000000      0x495 build/main.o
@@ -2126,31 +2127,31 @@ LOAD c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@
  .debug_abbrev  0x00001e51       0x26 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
 
 .debug_loclists
-                0x00000000     0x6951
+                0x00000000     0x695b
  .debug_loclists
-                0x00000000      0x494 build/main.o
+                0x00000000      0x49e build/main.o
  .debug_loclists
-                0x00000494       0x7e build/stm32f0xx_hal_msp.o
+                0x0000049e       0x7e build/stm32f0xx_hal_msp.o
  .debug_loclists
-                0x00000512       0xdc build/system_stm32f0xx.o
+                0x0000051c       0xdc build/system_stm32f0xx.o
  .debug_loclists
-                0x000005ee       0xc9 build/stm32f0xx_hal.o
+                0x000005f8       0xc9 build/stm32f0xx_hal.o
  .debug_loclists
-                0x000006b7      0x907 build/stm32f0xx_hal_adc.o
+                0x000006c1      0x907 build/stm32f0xx_hal_adc.o
  .debug_loclists
-                0x00000fbe      0x1ae build/stm32f0xx_hal_cortex.o
+                0x00000fc8      0x1ae build/stm32f0xx_hal_cortex.o
  .debug_loclists
-                0x0000116c      0x25d build/stm32f0xx_hal_gpio.o
+                0x00001176      0x25d build/stm32f0xx_hal_gpio.o
  .debug_loclists
-                0x000013c9     0x37d8 build/stm32f0xx_hal_tim.o
+                0x000013d3     0x37d8 build/stm32f0xx_hal_tim.o
  .debug_loclists
-                0x00004ba1     0x15e7 build/stm32f0xx_hal_tim_ex.o
+                0x00004bab     0x15e7 build/stm32f0xx_hal_tim_ex.o
  .debug_loclists
-                0x00006188      0x1a2 build/stm32f0xx_ll_exti.o
+                0x00006192      0x1a2 build/stm32f0xx_ll_exti.o
  .debug_loclists
-                0x0000632a      0x249 build/stm32f0xx_ll_gpio.o
+                0x00006334      0x249 build/stm32f0xx_ll_gpio.o
  .debug_loclists
-                0x00006573      0x3de build/stm32f0xx_ll_utils.o
+                0x0000657d      0x3de build/stm32f0xx_ll_utils.o
 
 .debug_aranges  0x00000000      0xab0
  .debug_aranges
@@ -2189,54 +2190,54 @@ LOAD c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@
                 0x00000a90       0x20 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
 
 .debug_rnglists
-                0x00000000      0x83e
+                0x00000000      0x83f
  .debug_rnglists
-                0x00000000       0xac build/main.o
+                0x00000000       0xad build/main.o
  .debug_rnglists
-                0x000000ac       0x31 build/stm32f0xx_hal_msp.o
+                0x000000ad       0x31 build/stm32f0xx_hal_msp.o
  .debug_rnglists
-                0x000000dd       0x2b build/stm32f0xx_it.o
+                0x000000de       0x2b build/stm32f0xx_it.o
  .debug_rnglists
-                0x00000108       0x1a build/system_stm32f0xx.o
+                0x00000109       0x1a build/system_stm32f0xx.o
  .debug_rnglists
-                0x00000122       0x97 build/stm32f0xx_hal.o
+                0x00000123       0x97 build/stm32f0xx_hal.o
  .debug_rnglists
-                0x000001b9       0xc1 build/stm32f0xx_hal_adc.o
+                0x000001ba       0xc1 build/stm32f0xx_hal_adc.o
  .debug_rnglists
-                0x0000027a       0x79 build/stm32f0xx_hal_cortex.o
+                0x0000027b       0x79 build/stm32f0xx_hal_cortex.o
  .debug_rnglists
-                0x000002f3       0x3f build/stm32f0xx_hal_gpio.o
+                0x000002f4       0x3f build/stm32f0xx_hal_gpio.o
  .debug_rnglists
-                0x00000332      0x305 build/stm32f0xx_hal_tim.o
+                0x00000333      0x305 build/stm32f0xx_hal_tim.o
  .debug_rnglists
-                0x00000637      0x11a build/stm32f0xx_hal_tim_ex.o
+                0x00000638      0x11a build/stm32f0xx_hal_tim_ex.o
  .debug_rnglists
-                0x00000751       0x38 build/stm32f0xx_ll_exti.o
+                0x00000752       0x38 build/stm32f0xx_ll_exti.o
  .debug_rnglists
-                0x00000789       0x51 build/stm32f0xx_ll_gpio.o
+                0x0000078a       0x51 build/stm32f0xx_ll_gpio.o
  .debug_rnglists
-                0x000007da       0x4b build/stm32f0xx_ll_utils.o
+                0x000007db       0x4b build/stm32f0xx_ll_utils.o
  .debug_rnglists
-                0x00000825       0x19 build/startup_stm32f051x8.o
+                0x00000826       0x19 build/startup_stm32f051x8.o
 
-.debug_line     0x00000000     0xb8d2
- .debug_line    0x00000000     0x1038 build/main.o
- .debug_line    0x00001038      0x3fe build/stm32f0xx_hal_msp.o
- .debug_line    0x00001436      0x26a build/stm32f0xx_it.o
- .debug_line    0x000016a0      0x2b1 build/system_stm32f0xx.o
- .debug_line    0x00001951      0x594 build/stm32f0xx_hal.o
- .debug_line    0x00001ee5     0x1096 build/stm32f0xx_hal_adc.o
- .debug_line    0x00002f7b      0x5c5 build/stm32f0xx_hal_cortex.o
- .debug_line    0x00003540      0x72e build/stm32f0xx_hal_gpio.o
- .debug_line    0x00003c6e     0x4cd0 build/stm32f0xx_hal_tim.o
- .debug_line    0x0000893e     0x1d2b build/stm32f0xx_hal_tim_ex.o
- .debug_line    0x0000a669      0x44d build/stm32f0xx_ll_exti.o
- .debug_line    0x0000aab6      0x50a build/stm32f0xx_ll_gpio.o
- .debug_line    0x0000afc0      0x7a8 build/stm32f0xx_ll_utils.o
- .debug_line    0x0000b768       0x77 build/startup_stm32f051x8.o
- .debug_line    0x0000b7df       0x53 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_thumb1_case_shi.o)
- .debug_line    0x0000b832       0x56 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
- .debug_line    0x0000b888       0x4a c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
+.debug_line     0x00000000     0xb90b
+ .debug_line    0x00000000     0x1071 build/main.o
+ .debug_line    0x00001071      0x3fe build/stm32f0xx_hal_msp.o
+ .debug_line    0x0000146f      0x26a build/stm32f0xx_it.o
+ .debug_line    0x000016d9      0x2b1 build/system_stm32f0xx.o
+ .debug_line    0x0000198a      0x594 build/stm32f0xx_hal.o
+ .debug_line    0x00001f1e     0x1096 build/stm32f0xx_hal_adc.o
+ .debug_line    0x00002fb4      0x5c5 build/stm32f0xx_hal_cortex.o
+ .debug_line    0x00003579      0x72e build/stm32f0xx_hal_gpio.o
+ .debug_line    0x00003ca7     0x4cd0 build/stm32f0xx_hal_tim.o
+ .debug_line    0x00008977     0x1d2b build/stm32f0xx_hal_tim_ex.o
+ .debug_line    0x0000a6a2      0x44d build/stm32f0xx_ll_exti.o
+ .debug_line    0x0000aaef      0x50a build/stm32f0xx_ll_gpio.o
+ .debug_line    0x0000aff9      0x7a8 build/stm32f0xx_ll_utils.o
+ .debug_line    0x0000b7a1       0x77 build/startup_stm32f051x8.o
+ .debug_line    0x0000b818       0x53 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_thumb1_case_shi.o)
+ .debug_line    0x0000b86b       0x56 c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
+ .debug_line    0x0000b8c1       0x4a c:/users/asa/appdata/roaming/code/user/globalstorage/bmd.stm32-for-vscode/@xpack-dev-tools/arm-none-eabi-gcc/12.3.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
 
 .debug_str      0x00000000     0x34aa
  .debug_str     0x00000000     0x11df build/main.o

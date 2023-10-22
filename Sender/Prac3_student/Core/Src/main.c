@@ -169,7 +169,7 @@ int main(void)
 
       //int to_send = data & 0b1;
 
-      if (ready)
+      if (ready && index < 13)
       {
 
       char bit_to_send_char = bin_number[index];
@@ -238,13 +238,21 @@ int main(void)
       {
 
         ++setup;
-        char lcd_display_string[16];
-        sprintf(lcd_display_string, "Setup: %d/8", setup);
-        writeLCD(lcd_display_string);
-        if (setup == 8)
+        if (setup <= 8)
         {
-          ready = True;
-          HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+          char lcd_display_string[16];
+          sprintf(lcd_display_string, "Setup: %d/8", setup);
+          writeLCD(lcd_display_string);
+          if (setup == 8)
+          {
+            ready = True;
+            HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+          }
+        }
+        else
+        {
+          char lcd_display_string[16] = "Sending Done";
+          writeLCD(lcd_display_string);
         }
       }
 
