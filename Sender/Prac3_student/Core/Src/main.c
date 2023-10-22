@@ -134,7 +134,9 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  int send = 0b1;
+  int send = 0b0;
+
+  send = ~send;
 
   uint32_t adc_value;
 
