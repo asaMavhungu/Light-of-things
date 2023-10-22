@@ -45,6 +45,12 @@
 ADC_HandleTypeDef hadc;
 TIM_HandleTypeDef htim3;
 
+
+#define True 1
+#define False 0
+
+uint16_t startup_stage = False;
+
 /* USER CODE BEGIN PV */
 uint32_t prev_millis = 0;
 uint32_t prevOn_millis = 0;
@@ -121,48 +127,76 @@ int main(void)
   char lux_str[20];
   while (1)
   {
+
+
     HAL_ADC_Start(&hadc);
     HAL_ADC_PollForConversion(&hadc,20);
     lux = HAL_ADC_GetValue(&hadc); //read ldr
-    if (!stoppedSending && !reachedEnd && !startedReceiving){ //transimission haven't started
+
+
+
+
+    // Ready stage
+    if (!stoppedSending && !reachedEnd && !startedReceiving) //transimission haven't started
+    { 
       sprintf(lux_str, "Ready 2 receive");
       writeLCD(lux_str);
     }
-    if (lux>9 && !stoppedSending && !reachedEnd){ 
+
+    if (lux>9 && !stoppedSending && !reachedEnd)
+    { 
       uint32_t currentTime = HAL_GetTick();
       uint32_t timePassed = currentTime-prev_millis; //check how much time have passed since led on
-      if (timePassed>=1000 && !startedReceiving){ //check if 1 sec have passed since led on, (starting bit) then start transmission
-        startedReceiving = 1;
+
+
+      if (timePassed>=1000 && !startedReceiving) // This is to turn on recieving
+      { //check if 1 sec have passed since led on, (starting bit) then start transmission
+        startedReceiving = True;
         prev_millis = currentTime;
       }
-      else if (startedReceiving){  //if transmission of data in progress, turn led if ldr detected light
+
+
+      else if (startedReceiving)
+      {  //if transmission of data in progress, turn led if ldr detected light
         HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
-        sprintf(lux_str, "Receiving data");
+        sprintf(lux_str, "Receiving data %d", lux);
         writeLCD(lux_str);
         ldrHigh = HAL_GetTick() - ldrPreviousState; //calculate for how long led on
+      }
+
     }
-    }
-    else{
+
+    else
+    {
       HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_RESET); //turn off led if no light detectected
-      if (ldrHigh>100 && !reachedEnd){  //read how long led was on, if on for 200 ms data transmission comes to an end
-        if (ldrHigh<=200){
-        //HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
-        //startedReceiving = 0;
-        if (!stoppedSending){ //check at what time transmission stopped then record it, will be used when calculating checkpoint
-          readStopingTime = HAL_GetTick() -200;
-        }
-        stoppedSending = 1;
-        HAL_Delay(800); //sender is flashing for 1sec to represent end of transmission, do nothing during this
+      if (ldrHigh>100 && !reachedEnd)
+      {  //read how long led was on, if on for 200 ms data transmission comes to an end
+        if (ldrHigh<=200)
+        {
+          //HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
+          //startedReceiving = j0;
+          if (!stoppedSending)
+          { //check at what time transmission stopped then record it, will be used when calculating checkpoint
+            readStopingTime = HAL_GetTick() -200;
+          }
+          stoppedSending = 1;
+          HAL_Delay(800); //sender is flashing for 1sec to represent end of transmission, do nothing during this
         }
       }
       ldrPreviousState=HAL_GetTick();
     }
-    if(stoppedSending && !reachedEnd){ //if finished receiving data but still not received checkpoint
+
+
+
+    if(stoppedSending && !reachedEnd)
+    { //if finished receiving data but still not received checkpoint
       uint32_t difference = readStopingTime-prev_millis;
       checkpoint = difference/500;  //calculate number of bits received/ checkpoint
       uint32_t checkpointTimeDifference = HAL_GetTick()-checkpointPreviousTime;
-      if (checkpointTimeDifference>=500){ //checkpoint is received every 500ms check if this time has passed
-        if (lux>9){ //check if led on when receiving checkpoint
+      if (checkpointTimeDifference>=500)
+      { //checkpoint is received every 500ms check if this time has passed
+        if (lux>9)
+        { //check if led on when receiving checkpoint
           receivedData |= (1 << index); //detect number checkpoint received from sender, since received as binary. Converted to decimal 
         }
         index++;
@@ -170,14 +204,16 @@ int main(void)
         sprintf(lux_str, "Received %d", checkpoint); //display received number of bits
         writeLCD(lux_str);
       }
-      if (checkpoint == receivedData && index>=8){ //if finished receiving all 8 bit represented checkpoint from sender and match(correct data)
+      if (checkpoint == receivedData && index>=8)
+      { //if finished receiving all 8 bit represented checkpoint from sender and match(correct data)
         sprintf(lux_str,"Correct data"); //display validation of correct data
         writeLCD(lux_str);
         HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
         HAL_Delay(1000); //turn on led for 1 sec since correct data
         HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_RESET);
       }
-      else if (checkpoint != receivedData && index>=8){ //if finished receiving all 8 bit represented checkpoint from sender and incorrect data
+      else if (checkpoint != receivedData && index>=8)
+      { //if finished receiving all 8 bit represented checkpoint from sender and incorrect data
         sprintf(lux_str,"Expected: %d", receivedData);// display when incorrect data, showing expected data
         writeLCD(lux_str);
         uint16_t ledFlash= 0;
@@ -190,7 +226,8 @@ int main(void)
         }
         
       }
-      if(index>=8){ //end of transmission with checkpoint received
+      if(index>=8)
+      { //end of transmission with checkpoint received
         reachedEnd = 1;
         writeLCD("Tranmission end");
       } 

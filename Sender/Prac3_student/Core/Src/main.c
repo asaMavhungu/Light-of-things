@@ -172,66 +172,66 @@ int main(void)
       if (ready && index < 13)
       {
 
-      char bit_to_send_char = bin_number[index];
+        char bit_to_send_char = bin_number[index];
 
-      int to_send = bit_to_send_char - 48;
+        int to_send = bit_to_send_char - 48;
 
-      if (send)
-      {
+        if (send)
+        {
 
-        //int to_send = data & 0b1;
-        data = data >> 1;
+          //int to_send = data & 0b1;
+          //data = data >> 1;
 
-        if (to_send)
-          HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_SET);
+          if (to_send)
+            HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_SET);
+          else
+            HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+
+          bin_number2[index] = bin_number[index];
+
+          ++index;
+
+          //++adc_value;
+          //char lcd_display_string[16];
+          //sprintf(lcd_display_string, "%lu", to_send);
+          //writeLCD(lcd_display_string);
+
+        }
         else
+        {
           HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+        }
+        // HAL_GPIO_TogglePin(GPIOB, LED5_Pin);
 
-        bin_number2[index] = bin_number[index];
+        // ADC to LCD; TODO: Read POT1 value and write to LCD
 
-        ++index;
 
-        //++adc_value;
-        //char lcd_display_string[16];
+
         //sprintf(lcd_display_string, "%lu", to_send);
+        //sprintf(lcd_display_string, "S: %s", data);
         //writeLCD(lcd_display_string);
-
-      }
-      else
-      {
-        HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
-      }
-      // HAL_GPIO_TogglePin(GPIOB, LED5_Pin);
-
-      // ADC to LCD; TODO: Read POT1 value and write to LCD
+        writeLCD(bin_number2);
 
 
 
-      //sprintf(lcd_display_string, "%lu", to_send);
-      //sprintf(lcd_display_string, "S: %s", data);
-      //writeLCD(lcd_display_string);
-      writeLCD(bin_number2);
+        //char bin_number[13];
+
+        decimalToBinaryString(adc_value, bin_number);
+
+        //char* ace = Dec2RadixI(asa, 2);
+
+        //char * bin_number = Dec2RadixI(asa, 2);
 
 
 
-      //char bin_number[13];
-
-      decimalToBinaryString(adc_value, bin_number);
-
-      //char* ace = Dec2RadixI(asa, 2);
-
-      //char * bin_number = Dec2RadixI(asa, 2);
+        //sprintf(bin_number, "0b", Dec2RadixI((int)adc_val, 2) );
+        setLCD2(bin_number);
 
 
+        // Update PWM value; TODO: Get CRR
+        CCR= ADCtoCCR(adc_value);
 
-      //sprintf(bin_number, "0b", Dec2RadixI((int)adc_val, 2) );
-      setLCD2(bin_number);
-
-
-      // Update PWM value; TODO: Get CRR
-      CCR= ADCtoCCR(adc_value);
-
-      __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, CCR);
+        __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, CCR);
       }
 
       else
