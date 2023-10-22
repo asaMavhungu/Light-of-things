@@ -51,6 +51,13 @@ uint32_t curr_millis = 0;
 uint32_t delay_t = 500; // Initialise delay to 500ms
 
 uint32_t data = 0b11011011;
+
+
+uint32_t data;
+uint32_t message;
+
+
+char bin_number[13];
 int transmit = 0b0;
 
 uint32_t adc_val;
@@ -127,7 +134,19 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  int send = 0b0;
+  int send = 0b1;
+
+  uint32_t adc_value;
+
+  char bin_number[13];
+
+  char bin_number2[13] = "xxxxxxxxxxxx";
+
+  int index = 0;
+
+  adc_value = pollADC();
+
+
 
   
   
@@ -135,63 +154,110 @@ int main(void)
   while (1)
     {
     // Toggle LED0
-    send = ~send;
+
     HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
 
-    int to_send = data & 0b1;
-
-    if (send)
+    if (transmit)
     {
+      send = ~send;
 
       //int to_send = data & 0b1;
-      data = data >> 1;
 
-      if (to_send)
-        HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_SET);
+      char bit_to_send_char = bin_number[index];
+
+      int to_send = bit_to_send_char - 48;
+
+      if (send)
+      {
+
+        //int to_send = data & 0b1;
+        data = data >> 1;
+
+        if (to_send)
+          HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_SET);
+        else
+          HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+
+        bin_number2[index] = bin_number[index];
+
+        ++index;
+
+        //++adc_value;
+        //char lcd_display_string[16];
+        //sprintf(lcd_display_string, "%lu", to_send);
+        //writeLCD(lcd_display_string);
+
+      }
       else
+      {
         HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+      }
+      // HAL_GPIO_TogglePin(GPIOB, LED5_Pin);
 
-      //++adc_value;
-      //char lcd_display_string[16];
+      // ADC to LCD; TODO: Read POT1 value and write to LCD
+
+
+
       //sprintf(lcd_display_string, "%lu", to_send);
+      //sprintf(lcd_display_string, "S: %s", data);
       //writeLCD(lcd_display_string);
+      writeLCD(bin_number2);
+
+
+
+      //char bin_number[13];
+
+      decimalToBinaryString(adc_value, bin_number);
+
+      //char* ace = Dec2RadixI(asa, 2);
+
+      //char * bin_number = Dec2RadixI(asa, 2);
+
+
+
+      //sprintf(bin_number, "0b", Dec2RadixI((int)adc_val, 2) );
+      setLCD2(bin_number);
+
+
+      // Update PWM value; TODO: Get CRR
+      CCR= ADCtoCCR(adc_value);
+
+      __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, CCR);
 
     }
     else
     {
-      HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+
+      // ADC to LCD; TODO: Read POT1 value and write to LCD
+
+      adc_value = pollADC();
+
+      char lcd_display_string[16];
+      //sprintf(lcd_display_string, "%lu", to_send);
+      sprintf(lcd_display_string, "Polling: %d", adc_value);
+      writeLCD(lcd_display_string);
+
+
+
+      //char bin_number[13];
+
+      decimalToBinaryString(adc_value, bin_number);
+
+      //char* ace = Dec2RadixI(asa, 2);
+
+      //char * bin_number = Dec2RadixI(asa, 2);
+
+
+
+      //sprintf(bin_number, "0b", Dec2RadixI((int)adc_val, 2) );
+      setLCD2(bin_number);
+
+
+      // Update PWM value; TODO: Get CRR
+      CCR= ADCtoCCR(adc_value);
+
+      __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, CCR);
     }
-    // HAL_GPIO_TogglePin(GPIOB, LED5_Pin);
-
-    // ADC to LCD; TODO: Read POT1 value and write to LCD
-
-    uint32_t adc_value = pollADC();
-
-    char lcd_display_string[16];
-    //sprintf(lcd_display_string, "%lu", to_send);
-    sprintf(lcd_display_string, "%d : %d : %d", to_send, adc_value, data);
-    writeLCD(lcd_display_string);
-
-
-
-    char bin_number[13];
-
-    decimalToBinaryString(adc_value, bin_number);
-
-    //char* ace = Dec2RadixI(asa, 2);
-
-    //char * bin_number = Dec2RadixI(asa, 2);
-
-
-
-    //sprintf(bin_number, "0b", Dec2RadixI((int)adc_val, 2) );
-    setLCD2(bin_number);
-
-
-    // Update PWM value; TODO: Get CRR
-    CCR= ADCtoCCR(adc_value);
-
-    __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, CCR);
 
     // Wait for delay ms
     HAL_Delay (delay_t);
@@ -517,6 +583,8 @@ void EXTI0_1_IRQHandler(void)
             //data = adc_val;
 
             data = pollADC();
+
+            //decimalToBinaryString(data, message);
 
             transmit = 0b1;
 
