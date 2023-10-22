@@ -134,9 +134,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 
-  int send = 0b0;
-
-  send = ~send;
+  int send = False;
 
   uint32_t adc_value;
 
@@ -145,6 +143,10 @@ int main(void)
   char bin_number2[13] = "xxxxxxxxxxxx";
 
   int index = 0;
+
+  int setup = 0;
+
+  int ready = False;
 
   adc_value = pollADC();
 
@@ -166,6 +168,9 @@ int main(void)
       //send = ~send;
 
       //int to_send = data & 0b1;
+
+      if (ready)
+      {
 
       char bit_to_send_char = bin_number[index];
 
@@ -227,6 +232,18 @@ int main(void)
       CCR= ADCtoCCR(adc_value);
 
       __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_3, CCR);
+      }
+
+      else
+      {
+
+        ++setup;
+        char lcd_display_string[16];
+        sprintf(lcd_display_string, "Setup: %d/8", setup);
+        writeLCD(lcd_display_string);
+        if (setup == 8)
+          ready = True;
+      }
 
     }
     else
@@ -590,7 +607,7 @@ void EXTI0_1_IRQHandler(void)
 
             //decimalToBinaryString(data, message);
 
-            transmit = 0b1;
+            transmit = True;
 
             //send_data(0b0, data, 0);
 
