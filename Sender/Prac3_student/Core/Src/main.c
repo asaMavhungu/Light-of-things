@@ -240,21 +240,22 @@ int main(void)
       {
 
         ++setup;
-        if (setup <= 3)
+        if (setup <= 2)
         {
           char lcd_display_string[16];
           sprintf(lcd_display_string, "Setup: %d/8", setup);
           writeLCD(lcd_display_string);
-          if (setup == 3)
+          if (setup == 2)
           {
             ready = True;
-            HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+            //HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
           }
         }
         else
         {
           char lcd_display_string[16] = "Sending Done";
           writeLCD(lcd_display_string);
+          setLCD2(bin_number2);
           delay_t = 150;
 
           int to_send = HAL_GPIO_ReadPin(GPIOB, LED7_Pin);
