@@ -70,9 +70,9 @@ volatile uint32_t last_button2_press_time = 0;
 #define False 0
 
 
-int transmit = False;
+volatile int transmit = False;
 
-int done_sending = False;
+volatile int done_sending = False;
 
 #define LINE_ONE 0x80 // Address of the first char in line 1 
 #define LINE_TWO 0xC0 // Address of the first char in line 2
@@ -175,6 +175,8 @@ int main(void)
     if (done_sending)
     {
       delay_t = 100;
+      send = HAL_GPIO_ReadPin(GPIOB, LED7_Pin);
+      HAL_GPIO_WritePin(GPIOB, LED5_Pin, send);
     }
 
 
@@ -706,9 +708,19 @@ void EXTI0_1_IRQHandler(void)
       // Check if the time difference is greater than a debounce threshold (e.g., 100 ms)
       if (time_difference > 100) {
 
+        HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+
 
         //done_sending = True;
+        if (transmit == False)
+        {
+          done_sending = True;
+        }
         transmit = False;
+
+        HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+
+        
         last_button2_press_time = current_time;
 
       }
