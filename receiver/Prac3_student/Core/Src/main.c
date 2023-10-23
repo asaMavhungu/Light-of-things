@@ -49,8 +49,11 @@ TIM_HandleTypeDef htim3;
 #define True 1
 #define False 0
 
-uint16_t startup_stage = False;
+uint16_t startup_stage = True;
 uint16_t recieving_stage = False;
+uint16_t data;
+char bin_number2[13] = "xxxxxxxxxxxx";
+int index = 0;
 
 /* USER CODE BEGIN PV */
 uint32_t prev_millis = 0;
@@ -59,7 +62,7 @@ uint32_t ldrPreviousState = 0;
 uint16_t stoppedSending = 0;
 uint16_t readStopingTime =0;
 uint32_t checkpointPreviousTime = 0;
-uint16_t index = 0;
+//uint16_t index = 0;
 uint32_t ldrHigh = 0;
 uint8_t receivedData = 0;
 uint16_t reachedEnd =0;
@@ -126,16 +129,91 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   char lux_str[20];
+  char the_lux[20] = "one";
+  delay_t = 100;
+  int ticks = 0;
   while (1)
   {
 
+    HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
 
+    
     HAL_ADC_Start(&hadc);
     HAL_ADC_PollForConversion(&hadc,20);
     lux = HAL_ADC_GetValue(&hadc); //read ldr
 
+    
+
     //HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
 
+    if (startup_stage)
+    {
+
+
+      sprintf(lux_str, "liux is, %d", lux);
+      writeLCD(lux_str);
+      
+      if (lux > 100)
+      {
+
+        uint32_t currentTime = HAL_GetTick();
+        uint32_t timePassed = currentTime-prev_millis; //check how much time have passed since led on
+
+        sprintf(lux_str, "tik is, %d", ticks);
+        writeLCD(lux_str);
+        ++ticks;
+        //prev_millis = currentTime;
+
+        
+        if (ticks >= 11 ) // This is to turn on recieving
+        { //check if 1 sec have passed since led on, (starting bit) then start transmission
+          startup_stage = False;
+          recieving_stage = True;
+          //prev_millis = currentTime;
+          delay_t = 500;
+        }
+
+      }
+      else
+      {
+        ticks = 0;
+      }
+
+    }
+
+    if (recieving_stage)
+    {
+      //writeLCD(bin_number2);
+
+      //HAL_Delay(500);
+      HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
+
+
+      if (lux>100)
+        data = True;
+      else
+        data = False;
+
+      bin_number2[index] = (data+48);
+
+      ++index;
+
+      writeLCD(bin_number2);
+
+      if (index >=12)
+      {
+        recieving_stage = False;
+        startup_stage = True;
+      }
+        
+    }
+
+    HAL_Delay(delay_t);
+
+
+
+
+    /*
 
     // Ready stage
     if (!stoppedSending && !reachedEnd && !startedReceiving) //transimission haven't started
@@ -278,7 +356,10 @@ int main(void)
      //sprintf(lux_str, "%d", lux);
      //HAL_Delay (250);
    
+    }
+  */
   }
+  
   /* USER CODE END 3 */
 }
 
