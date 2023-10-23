@@ -161,7 +161,9 @@ int main(void)
 
     HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
 
-    send = HAL_GPIO_ReadPin(GPIOB, LED7_Pin);
+    //send = HAL_GPIO_ReadPin(GPIOB, LED7_Pin);
+
+    send = True;
 
     if (transmit)
     {
@@ -238,12 +240,12 @@ int main(void)
       {
 
         ++setup;
-        if (setup <= 8)
+        if (setup <= 3)
         {
           char lcd_display_string[16];
           sprintf(lcd_display_string, "Setup: %d/8", setup);
           writeLCD(lcd_display_string);
-          if (setup == 8)
+          if (setup == 3)
           {
             ready = True;
             HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
@@ -253,6 +255,13 @@ int main(void)
         {
           char lcd_display_string[16] = "Sending Done";
           writeLCD(lcd_display_string);
+          delay_t = 150;
+
+          int to_send = HAL_GPIO_ReadPin(GPIOB, LED7_Pin);
+          if (to_send)
+            HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_SET);
+          else
+            HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
         }
       }
 
@@ -331,7 +340,7 @@ void send_data_DEPRECATED(int send, int data, uint32_t CCR)
   while(1)
   {
     // Toggle LED0
-    send = ~send;
+    //send = ~send;
     HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
 
     int to_send = data & 0b1;

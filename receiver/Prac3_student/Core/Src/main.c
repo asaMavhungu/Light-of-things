@@ -50,6 +50,7 @@ TIM_HandleTypeDef htim3;
 #define False 0
 
 uint16_t startup_stage = False;
+uint16_t recieving_stage = False;
 
 /* USER CODE BEGIN PV */
 uint32_t prev_millis = 0;
@@ -133,7 +134,7 @@ int main(void)
     HAL_ADC_PollForConversion(&hadc,20);
     lux = HAL_ADC_GetValue(&hadc); //read ldr
 
-
+    //HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
 
 
     // Ready stage
@@ -142,6 +143,47 @@ int main(void)
       sprintf(lux_str, "Ready 2 receive");
       writeLCD(lux_str);
     }
+
+    if (lux>9 && !stoppedSending && !reachedEnd)
+    {
+      uint32_t currentTime = HAL_GetTick();
+      uint32_t timePassed = currentTime-prev_millis; //check how much time have passed since led on
+
+
+      if (timePassed>=1000 && !startedReceiving) // This is to turn on recieving
+      { //check if 1 sec have passed since led on, (starting bit) then start transmission
+        startup_stage = True;
+        //startedReceiving = True;
+        prev_millis = currentTime;
+      }
+    }
+    else if (lux<9 && startup_stage && !stoppedSending && !reachedEnd)
+    {
+      uint32_t currentTime = HAL_GetTick();
+      uint32_t timePassed = currentTime-prev_millis; //check how much time have passed since led on
+
+      startup_stage = False;
+      recieving_stage = True;
+
+    }
+
+    if (recieving_stage)
+    {
+
+      if (lux > 9)
+      {
+        HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
+        // wait 500ms
+      }
+      else
+      {
+        // write a 0
+      }
+
+
+    }
+
+    
 
     if (lux>9 && !stoppedSending && !reachedEnd)
     { 
@@ -234,6 +276,7 @@ int main(void)
       
     }
      //sprintf(lux_str, "%d", lux);
+     //HAL_Delay (250);
    
   }
   /* USER CODE END 3 */
