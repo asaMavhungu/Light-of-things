@@ -66,9 +66,9 @@ uint32_t checkpointPreviousTime = 0;
 uint32_t ldrHigh = 0;
 uint8_t receivedData = 0;
 uint16_t reachedEnd =0;
-uint32_t requiredTime = 200; // 200 ms
+uint32_t requiredTime = 250; // 200 ms
 int16_t startedReceiving = 0;
-uint32_t delay_t = 500; // Initialise delay to 500ms
+volatile uint32_t delay_t = 500; // Initialise delay to 500ms
 uint32_t checkpoint = 0;
 uint32_t adc_val;
 uint16_t lux = 0;
@@ -153,7 +153,7 @@ int main(void)
       sprintf(lux_str, "liux is, %d", lux);
       writeLCD(lux_str);
       
-      if (lux > 100)
+      if (lux>18)
       {
 
         uint32_t currentTime = HAL_GetTick();
@@ -165,12 +165,14 @@ int main(void)
         //prev_millis = currentTime;
 
         
-        if (ticks >= 11 ) // This is to turn on recieving
+        if (ticks >= 8 ) // This is to turn on recieving
         { //check if 1 sec have passed since led on, (starting bit) then start transmission
+          
           startup_stage = False;
           recieving_stage = True;
           //prev_millis = currentTime;
-          delay_t = 500;
+          delay_t = 550;
+          HAL_Delay(250);
         }
 
       }
@@ -189,19 +191,24 @@ int main(void)
       HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
 
 
-      if (lux>100)
+      if (lux>18)
         data = True;
       else
         data = False;
 
-      bin_number2[index] = (data+48);
+      if (index!=0)
+      {
+        bin_number2[index-1] = (data+48);
+      }
+
 
       ++index;
 
       writeLCD(bin_number2);
 
-      if (index >=12)
+      if (index >=13)
       {
+        delay_t = 100000;
         recieving_stage = False;
         startup_stage = True;
       }
