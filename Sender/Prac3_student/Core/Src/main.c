@@ -142,11 +142,11 @@ int main(void)
 
   char bin_number2[13] = "xxxxxxxxxxxx";
 
-  int index = 0;
+  volatile int index = 0;
 
-  int setup = 0;
+  volatile int setup = 0;
 
-  int ready = False;
+  volatile int ready = False;
 
   adc_value = pollADC();
 
@@ -256,7 +256,7 @@ int main(void)
           char lcd_display_string[16] = "Sending Done";
           writeLCD(lcd_display_string);
           setLCD2(bin_number2);
-          delay_t = 150;
+          //delay_t = 150;
 
           int to_send = HAL_GPIO_ReadPin(GPIOB, LED7_Pin);
           if (to_send)
@@ -278,6 +278,17 @@ int main(void)
       //sprintf(lcd_display_string, "%lu", to_send);
       sprintf(lcd_display_string, "Polling: %d", adc_value);
       writeLCD(lcd_display_string);
+
+
+        index = 0;
+
+        setup = 0;
+
+        ready = False;
+
+        for (int i = 0; i < 13; i++) {
+          bin_number2[i] = 'x';
+        }
 
 
 
@@ -628,7 +639,12 @@ void EXTI0_1_IRQHandler(void)
 
             //decimalToBinaryString(data, message);
 
-            transmit = True;
+            //transmit = True;
+
+            if (transmit)
+              transmit = False;
+            else
+              transmit = True;
 
             //send_data(0b0, data, 0);
 
