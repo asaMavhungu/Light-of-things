@@ -58,14 +58,21 @@ uint32_t message;
 
 
 char bin_number[13];
-int transmit = 0b0;
+
 
 uint32_t adc_val;
 volatile uint32_t last_button_press_time = 0;
 
+volatile uint32_t last_button2_press_time = 0;
+
 
 #define True 1
 #define False 0
+
+
+int transmit = False;
+
+int done_sending = False;
 
 #define LINE_ONE 0x80 // Address of the first char in line 1 
 #define LINE_TWO 0xC0 // Address of the first char in line 2
@@ -164,6 +171,12 @@ int main(void)
     //send = HAL_GPIO_ReadPin(GPIOB, LED7_Pin);
 
     send = True;
+
+    if (done_sending)
+    {
+      delay_t = 100;
+    }
+
 
     if (transmit)
     {
@@ -586,11 +599,28 @@ static void MX_GPIO_Init(void)
   LL_GPIO_SetPinMode(Button0_GPIO_Port, Button0_Pin, LL_GPIO_MODE_INPUT);
 
   /**/
+  LL_SYSCFG_SetEXTISource(LL_SYSCFG_EXTI_PORTA, LL_SYSCFG_EXTI_LINE1);
+
+  /**/
+  LL_GPIO_SetPinPull(Button1_GPIO_Port, Button1_Pin, LL_GPIO_PULL_UP);
+
+  /**/
+  LL_GPIO_SetPinMode(Button1_GPIO_Port, Button1_Pin, LL_GPIO_MODE_INPUT);
+
+  /**/
   EXTI_InitStruct.Line_0_31 = LL_EXTI_LINE_0;
   EXTI_InitStruct.LineCommand = ENABLE;
   EXTI_InitStruct.Mode = LL_EXTI_MODE_IT;
   EXTI_InitStruct.Trigger = LL_EXTI_TRIGGER_RISING;
   LL_EXTI_Init(&EXTI_InitStruct);
+
+  /**/
+  EXTI_InitStruct.Line_0_31 = LL_EXTI_LINE_1;
+  EXTI_InitStruct.LineCommand = ENABLE;
+  EXTI_InitStruct.Mode = LL_EXTI_MODE_IT;
+  EXTI_InitStruct.Trigger = LL_EXTI_TRIGGER_RISING;
+  LL_EXTI_Init(&EXTI_InitStruct);
+
 
   /**/
   GPIO_InitStruct.Pin = LED7_Pin;
@@ -666,6 +696,25 @@ void EXTI0_1_IRQHandler(void)
 		        last_button_press_time = current_time;
 		    }
 		}
+    if (__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_1) != RESET) {
+      // Clear the EXTI line 0 pending bit
+      __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_1);
+
+      // Get the current time
+      uint32_t current_time = HAL_GetTick();
+
+      // Calculate the time difference since the last button press
+      uint32_t time_difference = current_time - last_button2_press_time;
+
+      // Check if the time difference is greater than a debounce threshold (e.g., 100 ms)
+      if (time_difference > 100) {
+
+
+        done_sending = True;
+        last_button2_press_time = current_time;
+
+      }
+    }
   HAL_GPIO_EXTI_IRQHandler(Button0_Pin); // Clear interrupt flags
 
 }
