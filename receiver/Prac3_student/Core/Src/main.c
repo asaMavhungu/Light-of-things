@@ -53,7 +53,7 @@ uint16_t startup_stage = True;
 uint16_t recieving_stage = False;
 uint16_t data;
 char bin_number2[13] = "xxxxxxxxxxxx";
-int index = 0;
+volatile int bin_index = 0;
 
 /* USER CODE BEGIN PV */
 uint32_t prev_millis = 0;
@@ -196,21 +196,26 @@ int main(void)
       else
         data = False;
 
-      if (index!=0)
+      if (bin_index!=0)
       {
-        bin_number2[index-1] = (data+48);
+        bin_number2[bin_index-1] = (data+48);
       }
 
 
-      ++index;
+      ++bin_index;
 
       writeLCD(bin_number2);
 
-      if (index >=13)
+      if (bin_index >=13)
       {
-        delay_t = 100000;
+        HAL_Delay(5000);
+        delay_t = 100;
         recieving_stage = False;
         startup_stage = True;
+        bin_index = 0;
+        for (int i = 0; i < 12; i++) {
+          bin_number2[i] = 'x';
+        }
       }
         
     }
