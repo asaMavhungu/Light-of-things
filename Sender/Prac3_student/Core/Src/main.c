@@ -255,16 +255,17 @@ int main(void)
       {
 
         ++setup;
-        if (setup <= 2)
+        if (setup == 3)
+        {
+          ready = True;
+          //HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+        }
+        if (setup < 3)
         {
           char lcd_display_string[16];
           sprintf(lcd_display_string, "Setup: %d/8", setup);
           writeLCD(lcd_display_string);
-          if (setup == 2)
-          {
-            ready = True;
-            //HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
-          }
+
         }
         else
         {
@@ -720,7 +721,7 @@ void EXTI0_1_IRQHandler(void)
 
         HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
 
-        
+
         last_button2_press_time = current_time;
 
       }
