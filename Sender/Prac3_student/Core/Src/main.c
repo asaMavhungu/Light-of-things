@@ -671,10 +671,7 @@ void EXTI0_1_IRQHandler(void)
 
             //transmit = True;
 
-            if (transmit)
-              transmit = False;
-            else
-              transmit = True;
+            transmit = True;
 
             //send_data(0b0, data, 0);
 
@@ -710,7 +707,8 @@ void EXTI0_1_IRQHandler(void)
       if (time_difference > 100) {
 
 
-        done_sending = True;
+        //done_sending = True;
+        transmit = False;
         last_button2_press_time = current_time;
 
       }
