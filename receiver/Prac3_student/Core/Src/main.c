@@ -60,18 +60,6 @@ int index = 0;
 int threshold = 18;
 
 /* USER CODE BEGIN PV */
-uint32_t prev_millis = 0;
-uint32_t prevOn_millis = 0;
-uint32_t ldrPreviousState = 0;
-uint16_t stoppedSending = 0;
-uint16_t readStopingTime =0;
-uint32_t checkpointPreviousTime = 0;
-//uint16_t index = 0;
-uint32_t ldrHigh = 0;
-uint8_t receivedData = 0;
-uint16_t reachedEnd =0;
-uint32_t requiredTime = 250; // 200 ms
-int16_t startedReceiving = 0;
 volatile uint32_t delay_t = 500; // Initialise delay to 500ms
 uint32_t adc_val;
 uint16_t lux = 0;
@@ -138,50 +126,44 @@ int main(void)
   int ticks = 0;
   while (1)
   {
-
-    //HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
-
-    
+    /*read adc value of ldr*/
     HAL_ADC_Start(&hadc);
     HAL_ADC_PollForConversion(&hadc,20);
     lux = HAL_ADC_GetValue(&hadc); //read ldr
 
-    
-
-    //HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
-
+    /*
+    *Check whether it's the start bit or end bit that is received by checking how long led has been on
+    *If led on for 1 sec start receiving, else if led on for 200ms, end receiving data and go to validation stage
+    */
     if (startup_stage)
     {
 
-
-      //sprintf(lux_str, "liux is, %d", lux);
       sprintf(lux_str, "Ready 2 receive");
       writeLCD(lux_str);
       
       if (lux>threshold)
       {
-
-        uint32_t currentTime = HAL_GetTick();
-        uint32_t timePassed = currentTime-prev_millis; //check how much time have passed since led on
-
-        //sprintf(lux_str, "tik is, %d", ticks);
         sprintf(lux_str, "Ready 2 receive");
         writeLCD(lux_str);
         ++ticks;
 
-        
+        /*
+        *Check if led on for 1 sec, increment number of samples received then go to receiving data stage
+        */
         if (ticks >= 8 ) // This is to turn on recieving
-        { //check if 1 sec have passed since led on, (starting bit) then start transmission
-          
+        { 
           startup_stage = False;
           recieving_stage = True;
-          
-          checkpoint++ ;
+          checkpoint++ ; //increment number of samples received
           delay_t = 550;
           HAL_Delay(250);
         }
 
       }
+
+      /*
+      *Check if led on for only 200ms, then last sample has been received. Go to stopping stage
+      */
       else
       {
         if (ticks >=4 && ticks <8)
@@ -199,7 +181,9 @@ int main(void)
 
     }
 
-
+    /*
+    *If all samples have been received, prepare to receive the checkpoint from sender
+    */
     if (end_stage)
     {
       
@@ -213,13 +197,12 @@ int main(void)
 
     }
 
+    /*
+    *Receive data of each sample by reading ldr, if ldr above threshold then record 1 and turn on the led7,
+    *Else if ldr is below threshold record 0 and turn off the led7.
+    */
     if (recieving_stage)
     {
-      //writeLCD(bin_number2);
-
-      //HAL_Delay(500);
-      HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
-
 
       if (lux>threshold)
       {
@@ -233,23 +216,33 @@ int main(void)
       }
         
 
-      if (index!=0)
+      if (index!=0)//do not record starting bit
       {
         bin_number2[index-1] = (data+48);
       }
 
-
-      ++index;
+      ++index; //update index of next bit to be received
 
       writeLCD(bin_number2);
 
+
+      /*
+      *Check if last bit of a sample has been received then reset flags to receive next sample
+      */
       if (index >=13)
       {
         HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_RESET);
         
         delay_t = 100;
+
+        /*
+        *If all samples have been received then validate the number of samples received
+        *If number of samples correponds to checkpoint recieved from sender leave led on for 5sec
+        *Else if they are not equal toggle led on and off with 200ms delay
+        */
         if (receiving_end_stage )
         {
+
           HAL_Delay(5000);
           int actual_checkpoint = binaryToDecimal(bin_number2);
           sprintf(lux_str, "Actual: %d", actual_checkpoint);
@@ -259,9 +252,7 @@ int main(void)
           sprintf(lux_str, "Received: %d",checkpoint);
           lcd_putstring(lux_str);
 
-          //writeLCD("finished");
-
-          
+          //If number of sample received do not match with sender toggle led on and off with 200ms delay
           if (actual_checkpoint!=checkpoint)
           {
             uint16_t ledFlash= 0;
@@ -269,7 +260,7 @@ int main(void)
             while (ledFlash<5000)
             {
               HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
-              HAL_Delay(200); //flash led on and off for 1 sec with 200ms delat inbetween
+              HAL_Delay(200); //flash led on and off for 1 sec with 200ms delay inbetween
               HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_RESET);
               HAL_Delay(200);
               ledFlash += 200;
@@ -277,6 +268,7 @@ int main(void)
 
           }
 
+          //Correct number of samples received, leave led on
           else if(actual_checkpoint==checkpoint)
           {
             HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
@@ -287,9 +279,10 @@ int main(void)
           
           HAL_Delay(9999999);
         }
+
+        //reset flags to receive next sample
         else
         {
-
           recieving_stage = False;
           startup_stage = True;
         }
@@ -305,166 +298,18 @@ int main(void)
     }
 
 
-
     HAL_Delay(delay_t);
 
-
-
-
-    /*
-
-    // Ready stage
-    if (!stoppedSending && !reachedEnd && !startedReceiving) //transimission haven't started
-    { 
-      sprintf(lux_str, "Ready 2 receive");
-      writeLCD(lux_str);
-    }
-
-    if (lux>9 && !stoppedSending && !reachedEnd)
-    {
-      uint32_t currentTime = HAL_GetTick();
-      uint32_t timePassed = currentTime-prev_millis; //check how much time have passed since led on
-
-
-      if (timePassed>=1000 && !startedReceiving) // This is to turn on recieving
-      { //check if 1 sec have passed since led on, (starting bit) then start transmission
-        startup_stage = True;
-        //startedReceiving = True;
-        prev_millis = currentTime;
-      }
-    }
-    else if (lux<9 && startup_stage && !stoppedSending && !reachedEnd)
-    {
-      uint32_t currentTime = HAL_GetTick();
-      uint32_t timePassed = currentTime-prev_millis; //check how much time have passed since led on
-
-      startup_stage = False;
-      recieving_stage = True;
-
-    }
-
-    if (recieving_stage)
-    {
-
-      if (lux > 9)
-      {
-        HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
-        // wait 500ms
-      }
-      else
-      {
-        // write a 0
-      }
-
-
-    }
-
-    
-
-    if (lux>9 && !stoppedSending && !reachedEnd)
-    { 
-      uint32_t currentTime = HAL_GetTick();
-      uint32_t timePassed = currentTime-prev_millis; //check how much time have passed since led on
-
-
-      if (timePassed>=1000 && !startedReceiving) // This is to turn on recieving
-      { //check if 1 sec have passed since led on, (starting bit) then start transmission
-        startedReceiving = True;
-        prev_millis = currentTime;
-      }
-
-
-      else if (startedReceiving)
-      {  //if transmission of data in progress, turn led if ldr detected light
-        HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
-        sprintf(lux_str, "Receiving data %d", lux);
-        writeLCD(lux_str);
-        ldrHigh = HAL_GetTick() - ldrPreviousState; //calculate for how long led on
-      }
-
-    }
-
-    else
-    {
-      HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_RESET); //turn off led if no light detectected
-      if (ldrHigh>100 && !reachedEnd)
-      {  //read how long led was on, if on for 200 ms data transmission comes to an end
-        if (ldrHigh<=200)
-        {
-          //HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
-          //startedReceiving = j0;
-          if (!stoppedSending)
-          { //check at what time transmission stopped then record it, will be used when calculating checkpoint
-            readStopingTime = HAL_GetTick() -200;
-          }
-          stoppedSending = 1;
-          HAL_Delay(800); //sender is flashing for 1sec to represent end of transmission, do nothing during this
-        }
-      }
-      ldrPreviousState=HAL_GetTick();
-    }
-
-
-
-    if(stoppedSending && !reachedEnd)
-    { //if finished receiving data but still not received checkpoint
-      uint32_t difference = readStopingTime-prev_millis;
-      checkpoint = difference/500;  //calculate number of bits received/ checkpoint
-      uint32_t checkpointTimeDifference = HAL_GetTick()-checkpointPreviousTime;
-      if (checkpointTimeDifference>=500)
-      { //checkpoint is received every 500ms check if this time has passed
-        if (lux>9)
-        { //check if led on when receiving checkpoint
-          receivedData |= (1 << index); //detect number checkpoint received from sender, since received as binary. Converted to decimal 
-        }
-        index++;
-        checkpointPreviousTime = HAL_GetTick();
-        sprintf(lux_str, "Received %d", checkpoint); //display received number of bits
-        writeLCD(lux_str);
-      }
-      if (checkpoint == receivedData && index>=8)
-      { //if finished receiving all 8 bit represented checkpoint from sender and match(correct data)
-        sprintf(lux_str,"Correct data"); //display validation of correct data
-        writeLCD(lux_str);
-        HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
-        HAL_Delay(1000); //turn on led for 1 sec since correct data
-        HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_RESET);
-      }
-      else if (checkpoint != receivedData && index>=8)
-      { //if finished receiving all 8 bit represented checkpoint from sender and incorrect data
-        sprintf(lux_str,"Expected: %d", receivedData);// display when incorrect data, showing expected data
-        writeLCD(lux_str);
-        uint16_t ledFlash= 0;
-        while (ledFlash<1000){
-          HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
-          HAL_Delay(200); //flash led on and off for 1 sec with 200ms delat inbetween
-          HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_RESET);
-          HAL_Delay(200);
-          ledFlash += 200;
-        }
-        
-      }
-      if(index>=8)
-      { //end of transmission with checkpoint received
-        reachedEnd = 1;
-        writeLCD("Tranmission end");
-      } 
-      
-    }
-     //sprintf(lux_str, "%d", lux);
-     //HAL_Delay (250);
-   
-    }
-  */
   }
   
   /* USER CODE END 3 */
 }
 
-
+/*
+*Convert binary to decimal
+*/
 int binaryToDecimal(char *binary) {
     int decimal = 0;
-    //int length = strlen(binary);
 
     for (int i = 1; i < 12; i++) {
         if (binary[i] == '1') {
@@ -473,12 +318,9 @@ int binaryToDecimal(char *binary) {
             decimal = decimal << 1;
         } else {
             // Handle invalid characters if needed
-            //printf("Invalid character in the binary string: %c\n", binary[i]);
             return -1;
         }
     }
-
-    //decimal = decimal >> 1;
 
     return decimal;
 }
