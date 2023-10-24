@@ -50,17 +50,14 @@ uint32_t prev_millis = 0;
 uint32_t curr_millis = 0;
 uint32_t delay_t = 500; // Initialise delay to 500ms
 
-uint32_t data = 0b11011011;
 
-
-uint32_t data;
 uint32_t message;
 
 
 char bin_number[13];
 
 
-uint32_t adc_val;
+volatile uint32_t adc_val;
 volatile uint32_t last_button_press_time = 0;
 
 volatile uint32_t last_button2_press_time = 0;
@@ -71,6 +68,8 @@ volatile uint32_t last_button2_press_time = 0;
 
 
 volatile int transmit = False;
+
+volatile uint16_t counter = 0;
 
 volatile int done_sending = False;
 
@@ -143,11 +142,11 @@ int main(void)
 
   int send = False;
 
-  uint32_t adc_value;
+  volatile uint32_t adc_value;
 
-  char bin_number[13];
+  volatile char bin_number[13];
 
-  char bin_number2[13] = "xxxxxxxxxxxx";
+  volatile char bin_number2[13] = "xxxxxxxxxxxx";
 
   volatile int index = 0;
 
@@ -155,7 +154,7 @@ int main(void)
 
   volatile int ready = False;
 
-  adc_value = pollADC();
+  //adc_value = pollADC();
 
 
 
@@ -174,9 +173,24 @@ int main(void)
 
     if (done_sending)
     {
-      delay_t = 100;
+      delay_t = 500;
+      index = 0;
+      //decimalToBinaryString(counter, bin_number);
+      adc_value = counter;
+      decimalToBinaryString(adc_val, bin_number);
+      ready = True;
+      transmit = True;
+      done_sending= False;
+      index = 0;
+      for (int i = 0; i < 13; i++) {
+        bin_number2[i] = 'x';
+      }
+      
       send = HAL_GPIO_ReadPin(GPIOB, LED7_Pin);
-      HAL_GPIO_WritePin(GPIOB, LED5_Pin, send);
+      HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_SET);
+      HAL_Delay(800);
+      HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+
     }
 
 
@@ -255,16 +269,22 @@ int main(void)
       {
 
         ++setup;
-        if (setup == 3)
+
+        if (setup <= 3)
         {
-          ready = True;
-          //HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
-        }
-        if (setup < 3)
-        {
-          char lcd_display_string[16];
-          sprintf(lcd_display_string, "Setup: %d/8", setup);
-          writeLCD(lcd_display_string);
+          if (setup < 3)
+          {
+            char lcd_display_string[16];
+            sprintf(lcd_display_string, "Setup: %d/8", setup);
+            writeLCD(lcd_display_string);
+          }
+
+          if (setup == 3)
+          {
+            ready = True;
+            ++counter;
+            //HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_RESET);
+          }
 
         }
         else
@@ -274,7 +294,7 @@ int main(void)
           setLCD2(bin_number2);
           //delay_t = 150;
 
-          int to_send = HAL_GPIO_ReadPin(GPIOB, LED7_Pin);
+          int to_send = False;
           if (to_send)
             HAL_GPIO_WritePin(GPIOB, LED5_Pin, GPIO_PIN_SET);
           else
@@ -668,7 +688,9 @@ void EXTI0_1_IRQHandler(void)
 
             //data = adc_val;
 
-            data = pollADC();
+            //data = pollADC();
+
+            //++counter;
 
             //decimalToBinaryString(data, message);
 

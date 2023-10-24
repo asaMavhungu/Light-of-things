@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 1
 
 
    1              		.cpu cortex-m0
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
   30:Core/Src/stm32f0xx_hal_msp.c **** /* USER CODE END TD */
   31:Core/Src/stm32f0xx_hal_msp.c **** 
   32:Core/Src/stm32f0xx_hal_msp.c **** /* Private define ------------------------------------------------------------*/
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 2
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 2
 
 
   33:Core/Src/stm32f0xx_hal_msp.c **** /* USER CODE BEGIN Define */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
   42 000a 9961     		str	r1, [r3, #24]
   43              		.loc 1 71 3 view .LVU4
   44 000c 9969     		ldr	r1, [r3, #24]
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 3
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 3
 
 
   45 000e 0A40     		ands	r2, r1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
   84:Core/Src/stm32f0xx_hal_msp.c **** * @param hadc: ADC handle pointer
   85:Core/Src/stm32f0xx_hal_msp.c **** * @retval None
   86:Core/Src/stm32f0xx_hal_msp.c **** */
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 4
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 4
 
 
   87:Core/Src/stm32f0xx_hal_msp.c **** void HAL_ADC_MspInit(ADC_HandleTypeDef* hadc)
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
  112:Core/Src/stm32f0xx_hal_msp.c **** }
  118              		.loc 1 112 1 view .LVU22
  119 0018 08B0     		add	sp, sp, #32
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 5
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 5
 
 
  120              		@ sp needed
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
  161              		.loc 1 102 5 view .LVU36
  102:Core/Src/stm32f0xx_hal_msp.c ****     GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
  162              		.loc 1 102 25 is_stmt 0 view .LVU37
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 6
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 6
 
 
  163 0042 4023     		movs	r3, #64
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
  205              		.loc 1 122 3 is_stmt 1 view .LVU45
  206              		.loc 1 122 10 is_stmt 0 view .LVU46
  207 0002 0268     		ldr	r2, [r0]
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 7
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 7
 
 
  208              		.loc 1 122 5 view .LVU47
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
  241              		.cfi_endproc
  242              	.LFE345:
  244              		.section	.text.HAL_TIM_Base_MspInit,"ax",%progbits
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 8
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 8
 
 
  245              		.align	1
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
  156:Core/Src/stm32f0xx_hal_msp.c ****   /* USER CODE BEGIN TIM3_MspInit 1 */
  277              		.loc 1 156 5 view .LVU60
  156:Core/Src/stm32f0xx_hal_msp.c ****   /* USER CODE BEGIN TIM3_MspInit 1 */
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 9
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 9
 
 
  278              		.loc 1 156 5 view .LVU61
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
  327 0008 0021     		movs	r1, #0
  328 000a 01A8     		add	r0, sp, #4
  329              	.LVL13:
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 10
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 10
 
 
  330              		.loc 1 166 20 view .LVU70
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
  358 0026 5A61     		str	r2, [r3, #20]
  173:Core/Src/stm32f0xx_hal_msp.c ****     /**TIM3 GPIO Configuration
  359              		.loc 1 173 5 view .LVU79
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 11
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 11
 
 
  360 0028 5B69     		ldr	r3, [r3, #20]
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
  405              	.LFB348:
  190:Core/Src/stm32f0xx_hal_msp.c **** /**
  191:Core/Src/stm32f0xx_hal_msp.c **** * @brief TIM_Base MSP De-Initialization
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 12
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 12
 
 
  192:Core/Src/stm32f0xx_hal_msp.c **** * This function freeze the hardware resources used in this example
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
  441              		.file 2 "c:\\users\\asa\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpack
  442              		.file 3 "c:\\users\\asa\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpack
  443              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f051x8.h"
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 13
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 13
 
 
  444              		.file 5 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h"
@@ -729,29 +729,29 @@ ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 1
  449              		.file 10 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h"
  450              		.file 11 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h"
  451              		.file 12 "<built-in>"
-ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s 			page 14
+ARM GAS  C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f0xx_hal_msp.c
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:19     .text.HAL_MspInit:00000000 $t
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:25     .text.HAL_MspInit:00000000 HAL_MspInit
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:75     .text.HAL_MspInit:0000002c $d
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:80     .text.HAL_ADC_MspInit:00000000 $t
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:86     .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:181    .text.HAL_ADC_MspInit:00000058 $d
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:187    .text.HAL_ADC_MspDeInit:00000000 $t
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:193    .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:238    .text.HAL_ADC_MspDeInit:00000024 $d
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:245    .text.HAL_TIM_Base_MspInit:00000000 $t
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:251    .text.HAL_TIM_Base_MspInit:00000000 HAL_TIM_Base_MspInit
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:297    .text.HAL_TIM_Base_MspInit:00000024 $d
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:303    .text.HAL_TIM_MspPostInit:00000000 $t
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:309    .text.HAL_TIM_MspPostInit:00000000 HAL_TIM_MspPostInit
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:390    .text.HAL_TIM_MspPostInit:00000044 $d
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:397    .text.HAL_TIM_Base_MspDeInit:00000000 $t
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:403    .text.HAL_TIM_Base_MspDeInit:00000000 HAL_TIM_Base_MspDeInit
-C:\Users\Asa\AppData\Local\Temp\ccOAuhcR.s:434    .text.HAL_TIM_Base_MspDeInit:00000018 $d
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:19     .text.HAL_MspInit:00000000 $t
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:25     .text.HAL_MspInit:00000000 HAL_MspInit
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:75     .text.HAL_MspInit:0000002c $d
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:80     .text.HAL_ADC_MspInit:00000000 $t
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:86     .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:181    .text.HAL_ADC_MspInit:00000058 $d
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:187    .text.HAL_ADC_MspDeInit:00000000 $t
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:193    .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:238    .text.HAL_ADC_MspDeInit:00000024 $d
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:245    .text.HAL_TIM_Base_MspInit:00000000 $t
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:251    .text.HAL_TIM_Base_MspInit:00000000 HAL_TIM_Base_MspInit
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:297    .text.HAL_TIM_Base_MspInit:00000024 $d
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:303    .text.HAL_TIM_MspPostInit:00000000 $t
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:309    .text.HAL_TIM_MspPostInit:00000000 HAL_TIM_MspPostInit
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:390    .text.HAL_TIM_MspPostInit:00000044 $d
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:397    .text.HAL_TIM_Base_MspDeInit:00000000 $t
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:403    .text.HAL_TIM_Base_MspDeInit:00000000 HAL_TIM_Base_MspDeInit
+C:\Users\Asa\AppData\Local\Temp\ccBLBSZS.s:434    .text.HAL_TIM_Base_MspDeInit:00000018 $d
 
 UNDEFINED SYMBOLS
 memset
