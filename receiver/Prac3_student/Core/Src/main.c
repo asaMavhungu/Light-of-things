@@ -86,6 +86,7 @@ static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
 void EXTI0_1_IRQHandler(void);
 void writeLCD(char *char_in);
+int binaryToDecimal(char *binary);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -138,7 +139,7 @@ int main(void)
   while (1)
   {
 
-    HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
+    //HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
 
     
     HAL_ADC_Start(&hadc);
@@ -153,7 +154,8 @@ int main(void)
     {
 
 
-      sprintf(lux_str, "liux is, %d", lux);
+      //sprintf(lux_str, "liux is, %d", lux);
+      sprintf(lux_str, "Ready 2 receive");
       writeLCD(lux_str);
       
       if (lux>threshold)
@@ -162,10 +164,10 @@ int main(void)
         uint32_t currentTime = HAL_GetTick();
         uint32_t timePassed = currentTime-prev_millis; //check how much time have passed since led on
 
-        sprintf(lux_str, "tik is, %d", ticks);
+        //sprintf(lux_str, "tik is, %d", ticks);
+        sprintf(lux_str, "Ready 2 receive");
         writeLCD(lux_str);
         ++ticks;
-        //prev_millis = currentTime;
 
         
         if (ticks >= 8 ) // This is to turn on recieving
@@ -175,7 +177,6 @@ int main(void)
           recieving_stage = True;
           
           checkpoint++ ;
-          //prev_millis = currentTime;
           delay_t = 550;
           HAL_Delay(250);
         }
@@ -183,14 +184,6 @@ int main(void)
       }
       else
       {
-        /*if (ticks >= 2 && ticks<=4 ) //recieving end
-        { //check if 1 sec have passed since led on, (starting bit) then start transmission
-          
-          end_stage = True;
-          recieving_stage = False;
-          delay_t = 250;
-          HAL_Delay(250);
-        }*/
         if (ticks >=4 && ticks <8)
         {
 
@@ -200,8 +193,6 @@ int main(void)
           sprintf(lux_str, "Checkpoint , %d", checkpoint);
           writeLCD(lux_str);
         }
-        
-
 
         ticks = 0;
       }
@@ -211,17 +202,13 @@ int main(void)
 
     if (end_stage)
     {
-      sprintf(lux_str, "Checkpoint2 , %d", checkpoint);
-      writeLCD(lux_str);
-
+      
       startup_stage = False;
       recieving_stage = True;
       receiving_end_stage = True;
       end_stage = False;
-      //checkpoint++ ;
-      //prev_millis = currentTime;
       delay_t = 550;
-      HAL_Delay(250);
+      HAL_Delay(175);
 
 
     }
@@ -235,9 +222,16 @@ int main(void)
 
 
       if (lux>threshold)
+      {
         data = True;
+        HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
+      }
       else
+      {
         data = False;
+        HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_RESET);
+      }
+        
 
       if (index!=0)
       {
@@ -251,10 +245,46 @@ int main(void)
 
       if (index >=13)
       {
+        HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_RESET);
+        
         delay_t = 100;
         if (receiving_end_stage )
         {
-          writeLCD("finished");
+          HAL_Delay(5000);
+          int actual_checkpoint = binaryToDecimal(bin_number2);
+          sprintf(lux_str, "Actual: %d", actual_checkpoint);
+          writeLCD(lux_str);
+          
+          lcd_command(LINE_TWO);
+          sprintf(lux_str, "Received: %d",checkpoint);
+          lcd_putstring(lux_str);
+
+          //writeLCD("finished");
+
+          
+          if (actual_checkpoint!=checkpoint)
+          {
+            uint16_t ledFlash= 0;
+            
+            while (ledFlash<5000)
+            {
+              HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
+              HAL_Delay(200); //flash led on and off for 1 sec with 200ms delat inbetween
+              HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_RESET);
+              HAL_Delay(200);
+              ledFlash += 200;
+            }
+
+          }
+
+          else if(actual_checkpoint==checkpoint)
+          {
+            HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_SET);
+            HAL_Delay(5000);
+          }
+
+          HAL_GPIO_WritePin(LED7_GPIO_Port,LED7_Pin,GPIO_PIN_RESET);
+          
           HAL_Delay(9999999);
         }
         else
@@ -429,6 +459,28 @@ int main(void)
   }
   
   /* USER CODE END 3 */
+}
+
+
+int binaryToDecimal(char *binary) {
+    int decimal = 0;
+    //int length = strlen(binary);
+
+    for (int i = 1; i < 12; i++) {
+        if (binary[i] == '1') {
+            decimal = (decimal << 1) | 1;
+        } else if (binary[i] == '0') {
+            decimal = decimal << 1;
+        } else {
+            // Handle invalid characters if needed
+            //printf("Invalid character in the binary string: %c\n", binary[i]);
+            return -1;
+        }
+    }
+
+    //decimal = decimal >> 1;
+
+    return decimal;
 }
 
 /**
@@ -657,6 +709,8 @@ void writeLCD(char *char_in){
   lcd_putstring(char_in);
 
 }
+
+
 void ADC1_COMP_IRQHandler(void)
 {
 	adc_val = HAL_ADC_GetValue(&hadc); // read adc value
