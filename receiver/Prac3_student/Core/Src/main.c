@@ -50,10 +50,14 @@ TIM_HandleTypeDef htim3;
 #define False 0
 
 uint16_t startup_stage = True;
+uint16_t end_stage = False;
 uint16_t recieving_stage = False;
+uint16_t receiving_end_stage = False;
 uint16_t data;
+uint32_t checkpoint = 0;
 char bin_number2[13] = "xxxxxxxxxxxx";
-volatile int bin_index = 0;
+int index = 0;
+int threshold = 18;
 
 /* USER CODE BEGIN PV */
 uint32_t prev_millis = 0;
@@ -69,7 +73,6 @@ uint16_t reachedEnd =0;
 uint32_t requiredTime = 250; // 200 ms
 int16_t startedReceiving = 0;
 volatile uint32_t delay_t = 500; // Initialise delay to 500ms
-uint32_t checkpoint = 0;
 uint32_t adc_val;
 uint16_t lux = 0;
 /* USER CODE END PV */
@@ -153,7 +156,7 @@ int main(void)
       sprintf(lux_str, "liux is, %d", lux);
       writeLCD(lux_str);
       
-      if (lux>18)
+      if (lux>threshold)
       {
 
         uint32_t currentTime = HAL_GetTick();
@@ -170,6 +173,8 @@ int main(void)
           
           startup_stage = False;
           recieving_stage = True;
+          
+          checkpoint++ ;
           //prev_millis = currentTime;
           delay_t = 550;
           HAL_Delay(250);
@@ -178,8 +183,46 @@ int main(void)
       }
       else
       {
+        /*if (ticks >= 2 && ticks<=4 ) //recieving end
+        { //check if 1 sec have passed since led on, (starting bit) then start transmission
+          
+          end_stage = True;
+          recieving_stage = False;
+          delay_t = 250;
+          HAL_Delay(250);
+        }*/
+        if (ticks >=4 && ticks <8)
+        {
+
+          startup_stage = False;
+          end_stage = True;
+          
+          sprintf(lux_str, "Checkpoint , %d", checkpoint);
+          writeLCD(lux_str);
+        }
+        
+
+
         ticks = 0;
       }
+
+    }
+
+
+    if (end_stage)
+    {
+      sprintf(lux_str, "Checkpoint2 , %d", checkpoint);
+      writeLCD(lux_str);
+
+      startup_stage = False;
+      recieving_stage = True;
+      receiving_end_stage = True;
+      end_stage = False;
+      //checkpoint++ ;
+      //prev_millis = currentTime;
+      delay_t = 550;
+      HAL_Delay(250);
+
 
     }
 
@@ -191,34 +234,47 @@ int main(void)
       HAL_GPIO_TogglePin(GPIOB, LED7_Pin);
 
 
-      if (lux>18)
+      if (lux>threshold)
         data = True;
       else
         data = False;
 
-      if (bin_index!=0)
+      if (index!=0)
       {
-        bin_number2[bin_index-1] = (data+48);
+        bin_number2[index-1] = (data+48);
       }
 
 
-      ++bin_index;
+      ++index;
 
       writeLCD(bin_number2);
 
-      if (bin_index >=13)
+      if (index >=13)
       {
-        HAL_Delay(5000);
         delay_t = 100;
-        recieving_stage = False;
-        startup_stage = True;
-        bin_index = 0;
-        for (int i = 0; i < 12; i++) {
+        if (receiving_end_stage )
+        {
+          writeLCD("finished");
+          HAL_Delay(9999999);
+        }
+        else
+        {
+
+          recieving_stage = False;
+          startup_stage = True;
+        }
+        index = 0;
+        for (int i=0;i<12;i++)
+        {
           bin_number2[i] = 'x';
         }
+        HAL_Delay(5000);
+
       }
         
     }
+
+
 
     HAL_Delay(delay_t);
 
